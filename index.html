@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTK Studio</title>
+    <meta name="description" content="OTK Studio is the design and engineering office of Oliver Thomas Klein." /> 
+    <meta name="keywords" content="design, engineering, design studio, oliver thomas klein, otk, otk studio" />
+    <meta name="author" content="OTK Studio" />
+    <meta property="og:title" content="OTK Studio" />
+    <meta property="og:site_name" content="OTK Studio" />
+    <meta property="og:description" content="OTK Studio is the design and engineering office of Oliver Thomas Klein." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://otk.studio" />
+    <meta property="og:image" content="./assets/og_image_logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="800" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="canonical" href="https://otk.studio" />
+    <link rel="preload" as="fetch" href="content/compressed/specter_identity_h265.mp4" type="video/mp4; codecs=hevc" crossorigin="anonymous">
+    <link rel="preload" as="fetch" href="content/compressed/specter_identity.webm" type="video/webm; codecs=vp9" crossorigin="anonymous">
+    <link rel="preload" as="fetch" href="content/compressed/specter_identity_h264.mp4" type="video/mp4" crossorigin="anonymous">
+    <link rel="preload" as="font" href="fonts/Basel-Grotesk-Regular.woff2" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="fonts/Basel-Grotesk-Bold.woff2" type="font/woff2" crossorigin="anonymous" />
+    <script src="https://cdn.usefathom.com/script.js" data-site="CGKDXWXZ" defer></script>
+
+    <style>
+      @font-face {
+        font-family: "Berkeley Mono";
+        src: url(data:font/woff2;charset=utf-8;base64,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) format('woff2'); 
+        font-display: swap;
+        font-weight: normal;
+        font-style: normal;
+      }
+      
+      @font-face {
+        font-family: "Basel Grotesk";
+        src: url("fonts/Basel-Grotesk-Regular.woff2") format('woff2');
+        font-display: swap;
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Basel Grotesk";
+        src: url("fonts/Basel-Grotesk-Bold.woff2") format('woff2');
+        font-display: swap;
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-smoothing: antialiased;
+        backface-visibility: hidden;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
+
+      tt {
+        font-family: "Berkeley Mono", monospace;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: -0.02em;
+        display: inline-block;
+      }
+
+      #identity {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 114px;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        z-index: 3;
+        pointer-events: none;
+        user-select: none;
+        color: #777;
+        img {
+          width: 136px;
+          height: 55px;
+          object-fit: contain;
+          margin-left: -10px;
+          transition: filter 0.3s;
+        }
+      }
+
+      #identity:has(~ #carousel label[theme="light"] input:checked) > img {
+        filter: invert(0%);
+      }
+
+      #identity:has(~ #carousel label[theme="neutral"] input:checked) > img {
+        filter: invert(50%);
+      }
+
+      #identity:has(~ #carousel label[theme="dark"] input:checked) > img {
+        filter: invert(100%);
+      }
+
+      #about-us {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+        padding: 20px;
+        font-family: "Basel Grotesk", sans-serif;
+
+        h1 {
+          margin: 0;
+        }
+
+        h1, p, ol {
+          width: 400px;
+          max-width: 100%;
+          font-size: 20px;
+          font-weight: normal;
+          letter-spacing: -0.01em;
+        }
+
+        #signature {
+          margin-top: 20px;
+          img {
+            margin-left: -4px;
+          }
+          table {
+            border-spacing: 0;
+            margin-bottom: 4px;
+            td {
+              text-transform: uppercase;
+              vertical-align: top;
+              padding: 6px 0 0 0;
+              font-size: 0;
+            }
+            .email {
+              animation: blink 1s infinite;
+              &:hover {
+                animation: blink 0.3s infinite;
+              }
+            }
+          }
+        }
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        20% { opacity: 0.6; }
+      }
+
+      #carousel {
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+        height: 96vh;
+        user-select: none;
+        padding: 0 20px;
+      }
+
+      label {
+        z-index: 1;
+        flex-grow: 1;
+
+        input {
+          position: absolute;
+          display: none;
+        }
+        
+        .incrementor {
+          position: absolute;
+          width: 50%;
+          top: 0;
+          left: -50vw;
+          bottom: 48px;
+        }
+
+        .tab {
+          height: 48px;
+          padding: 0 1px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          cursor: pointer;
+          position: relative;
+
+          img {
+            visibility: hidden;
+            background: black;
+            position: absolute;
+            pointer-events: none;
+            left: calc(50% - 100px);
+            bottom: 24px;
+            width: 200px;
+            aspect-ratio: 3/2;
+            object-fit: cover;
+            border-radius: 4px;
+            outline: 2px solid white;
+            border-radius: 4px;
+            z-index: 10;
+          }
+
+          div {
+            height: 4px;
+            width: 100%;
+            z-index: 2;
+            background: white;
+            opacity: 0.25;
+            transform-origin: bottom center;
+            transition: transform 0.3s, opacity 0.4s, scale 0.2s;
+          }
+        }
+
+        &:first-child .tab img {
+          left: 0;
+        }
+
+        &:last-child .tab img {
+          left: auto;
+          right: 0;
+        }
+
+        .content {
+          z-index: -1;
+          visibility: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          overflow: hidden;
+          top: 0px;
+          right: 0px;
+          bottom: 0px;
+          left: 0px;
+
+          video, img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          video:not(.device) {
+            height: calc(100% + 4px);
+            width: calc(100% + 4px);
+            margin: -2px 0 0 -2px;
+            clip-path: inset(1px);
+          }
+
+          .contain {
+            object-fit: contain;
+          }
+
+          .device {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.01);
+            outline: 1px solid rgba(0,0,0,0.04);
+            overflow: hidden;
+          }
+
+          .app {
+            max-width: calc(33.33% - 10px);
+            border-radius: 8.97435897%/4.14691943%;
+          }
+        }
+
+        .device-content {
+          padding: 8vw 60px;
+          gap: 20px;
+
+          @media (max-height: 500px) {
+            padding: 20px 60px 36px;
+          }
+        }
+
+        .information {
+          display: grid;
+          grid-template-columns: 2fr 8fr;
+          grid-gap: 8px;
+          position: absolute;
+          right: 20px;
+          bottom: 20px;
+          left: 20px;
+          opacity: 0;
+          pointer-events: none;
+          z-index: 3;
+        }
+
+        &[theme="light"] {
+          .content {
+            background: black;
+            .device {
+              border-color: rgba(255,255,255,0.05);
+              outline-color: rgba(255,255,255,0.1);
+            }
+          }
+          .information {
+            color: white;
+          }
+        }
+        &[theme="neutral"] {
+          .content {
+            background: #ccc;
+          }
+          .information {
+            color: #aaa;
+          }
+        }
+        &[theme="dark"] {
+          .content {
+            background: #eee;
+          }
+          .information {
+            color: black;
+          }
+        }
+
+        &:has(input:checked) {
+          z-index: 0;
+
+          .information {
+            opacity: 1;
+          }
+
+          .content {
+            visibility: visible;
+          }
+
+          .tab div {
+            opacity: 0.9 !important;
+          }
+        }
+
+        .tab:hover {
+          img {
+            visibility: visible;
+          }
+          div {
+            transform: scaleY(4) !important;
+          }
+          & + .information {
+            opacity: 1;
+          }
+        }
+
+        .tab:active div {
+          scale: 1 0.95;
+        }
+
+        &:has(+ label .tab:hover),
+        &:has(.tab:hover) + label {
+          .tab div {
+            transform: scaleY(2.2);
+          }
+        }
+      }
+
+      body:has(.tab:hover) {
+        .tab div {
+          transform: scaleY(2);
+          opacity: 0.4;
+        }
+      }
+
+      #carousel:has(label:first-child > input:checked) > label:last-child .incrementor,
+      #carousel label:has(+ label > input:checked) .incrementor {
+        transform: translateX(50vw);
+        cursor: w-resize;
+      }
+
+      #carousel:has(label:last-child > input:checked) > label:first-child .incrementor,
+      #carousel label:has(> input:checked) + label .incrementor {
+        transform: translateX(100vw);
+        cursor: e-resize;
+      }
+
+      @media (min-width: 501px) {
+        label[theme="light"]:has(> input:checked),
+        label[theme="light"]:has(> input:checked) ~ label,
+        label:has(~ label[theme="light"] input:checked) {
+          .information {
+            color: #fff;
+          }
+          .tab img {
+            outline-color: #fff;
+          }
+        }
+
+        label[theme="neutral"]:has(> input:checked),
+        label[theme="neutral"]:has(> input:checked) ~ label,
+        label:has(~ label[theme="neutral"] input:checked) {
+          .information {
+            color: #aaa;
+          }
+          .tab img {
+            outline-color: #777;
+          }
+        }
+
+        label[theme="dark"]:has(> input:checked),
+        label[theme="dark"]:has(> input:checked) ~ label,
+        label:has(~ label[theme="dark"] input:checked) {
+          .information {
+            color: #000;
+          }
+          .tab img {
+            outline-color: #000;
+          }
+          .tab div {
+            background: #777;
+          }
+        }
+      }
+
+      @keyframes bounce {
+        0%, 70%, 84% { transform: translateY(0); }
+        60% { transform: translateY(-15vh); }
+        78% { transform: translateY(-1vh); }
+      }
+
+      @media (max-width: 500px) {
+        #identity {
+          pointer-events: auto;
+        }
+
+        #carousel {
+          overflow: scroll;
+          flex-direction: column;
+          scroll-snap-type: y mandatory;
+          scroll-padding: 0;
+          background: black;
+          height: 80vh;
+          padding: 0;
+
+          label {
+            position: relative;
+            scroll-snap-align: start;
+            animation: bounce 2s 2s ease-in-out forwards;
+
+            .content {
+              position: static;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              visibility: visible;
+              opacity: 1;
+              overflow: hidden;
+              height: 80vh;
+              width: 100vw;
+
+              video, img {
+                display: block;
+              }
+              
+              .device {
+                border-radius: 12px;
+              }
+
+              .mortal_identity {
+                width: 140%;
+              }
+            }
+
+            .device-content {
+              padding: 20px;
+              gap: 15px;
+            }
+
+            .information {
+              opacity: 1;
+              display: grid;
+              grid-template-columns: 1fr;
+            }
+
+            .tab,
+            .incrementor,
+            .project {
+              display: none;
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section id="identity">
+      <img alt="OTK Logo" src="data:image/png;base64,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" /> 
+      <tt>OFFICE &nbsp;DESIGN & &nbsp;ENGINEERING OTK STUDIO INC EST.1562277600</tt>
+    </section>
+
+    <section id="carousel">
+      <label project="Specter Identity" theme="light">
+        <input type="radio" name="item" checked />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Specter</tt>
+          <tt class="title">Reenvisioned, designed & developed Specter's graphic identity & application</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Specter Identity Thumbnail" src="./content/thumbnails/specter_identity.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <video fetchpriority="high" autoplay muted loop playsinline poster="data:image/png;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgP9vDw4JAAAAAAT9f+0JIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADALCWlGfCj+EEwAAAAASUVORK5CYII=">
+            <source src="./content/compressed/specter_identity_h265.mp4" type="video/mp4; codecs=hevc">
+            <source src="./content/compressed/specter_identity.webm" type="video/webm; codecs=vp9">
+            <source src="./content/compressed/specter_identity_h264.mp4">
+          </video>
+        </div>
+      </label>
+
+      <label project="Swan Vault" theme="dark">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Swan</tt>
+          <tt class="title">Conceptualized, designed & developed (FE) Swan's flagship custody product - Vault</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Swan Vault Thumbnail" src="./content/thumbnails/swan_vault.webp" />
+          <div></div>
+        </div>
+        <div class="content device-content">
+          <img class="contain device" fetchpriority="low" alt="Swan Vault" src="./content/compressed/swan_vault.webp" />
+        </div>
+      </label>
+
+      <label project="Swan Redesign" theme="dark">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Swan</tt>
+          <tt class="title">Redesigned Swan's application with a focus on user motivation, trust building, and responsiveness.</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Swan Redesign Thumbnail" src="./content/thumbnails/swan_redesign.webp" />
+          <div></div>
+        </div>
+        <div class="content device-content" style="padding: 20px 20px 0px; align-items: flex-end;">
+          <img style="border-bottom: 0px; border-radius: 16px 16px 0 0; mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0.2) 95%)" fetchpriority="low" class="contain device" alt="Swan Redesign" src="./content/compressed/swan_redesign.webp" />
+        </div>
+      </label>
+
+      <label project="Programme Identity" theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Programme</tt>
+          <tt class="title">Created Programme's name & visual identity system</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Programme Identity Thumbnail" src="./content/thumbnails/programme_identity.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <video class="contain" fetchpriority="low" muted loop playsinline>
+            <source src="./content/compressed/programme_identity_h265.mp4" type="video/mp4; codecs=hevc">
+            <source src="./content/compressed/programme_identity.webm" type="video/webm; codecs=vp9">
+            <source src="./content/compressed/programme_identity_h264.mp4">
+          </video>
+        </div>
+      </label>
+
+      <label project="Programme App" theme="dark">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Programme</tt>
+          <tt class="title">Conceptualized, designed & developed Programme's workout generation application</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Programme App Thumbnail" src="./content/thumbnails/programme_app.webp" />
+          <div></div>
+        </div>
+        <div class="content device-content">
+          <img class="device app" fetchpriority="low" alt="Programme App" src="./content/compressed/programme_app_1.webp" />
+          <img class="device app" fetchpriority="low" alt="Programme App" src="./content/compressed/programme_app_2.webp" />
+          <img class="device app" fetchpriority="low" alt="Programme App" src="./content/compressed/programme_app_3.webp" />
+        </div>
+      </label>
+
+      <label project="Programme Website" theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Programme</tt>
+          <tt class="title">Designed & developed Programme's website</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Programme Video Thumbnail" src="./content/thumbnails/programme_website.webp" />
+          <div></div>
+        </div>
+        <div class="content device-content">
+          <video class="device" fetchpriority="low" muted loop playsinline>
+            <source src="./content/compressed/programme_website_h265.mp4" type="video/mp4; codecs=hevc">
+            <source src="./content/compressed/programme_website.webm" type="video/webm; codecs=vp9">
+            <source src="./content/compressed/programme_website_h264.mp4">
+          </video>
+        </div>
+      </label>
+      
+      <label project="Programme Exercise Library" theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Programme</tt>
+          <tt class="title">Produced & directed 1000+ exercise videos for Programme's product & website</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Programme Exercise Library Thumbnail" src="./content/thumbnails/programme_library.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <img style="object-position: 50% 15%;" fetchpriority="low" alt="Programme Exercise Library Behind The Scenes" src="./content/compressed/programme_library.webp" />
+        </div>
+      </label>
+
+      <!-- <label project="Programme Marketing" theme="neutral"> -->
+      <!--   <input type="radio" name="item" /> -->
+      <!--   <div class="incrementor"></div> -->
+      <!--   <div class="information"> -->
+      <!--     <tt class="project">Programme</tt> -->
+      <!--     <tt class="title">Directed & photographed Programme's social campaigns</tt> -->
+      <!--   </div> -->
+      <!--   <div class="tab"> -->
+      <!--     <img loading="lazy" alt="Programme Photography Thumbnail" src="./content/thumbnails/programme_photography.webp" /> -->
+      <!--     <div></div> -->
+      <!--   </div> -->
+      <!--   <div class="content"> -->
+      <!--     <img fetchpriority="low" alt="Man jumping" src="./content/compressed/programme_photography.webp" /> -->
+      <!--   </div> -->
+      <!-- </label> -->
+
+      <label project="WattsApp App" theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">WattsApp</tt>
+          <tt class="title">Conceptualized, designed & developed Reggie Watts' personal social media application</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="WattsApp Thumbnail" src="./content/thumbnails/wattsapp.webp" />
+          <div></div>
+        </div>
+        <div class="content device-content">
+          <video class="device app" fetchpriority="low" muted loop playsinline>
+            <source src="./content/compressed/wattsapp_1_h265.mp4" type="video/mp4; codecs=hevc">
+            <source src="./content/compressed/wattsapp_1.webm" type="video/webm; codecs=vp9">
+            <source src="./content/compressed/wattsapp_1_h264.mp4">
+          </video>
+          <video class="device app" fetchpriority="low" muted loop playsinline>
+            <source src="./content/compressed/wattsapp_2_h265.mp4" type="video/mp4; codecs=hevc">
+            <source src="./content/compressed/wattsapp_2.webm" type="video/webm; codecs=vp9">
+            <source src="./content/compressed/wattsapp_2_h264.mp4">
+          </video>
+          <video class="device app" fetchpriority="low" muted loop playsinline>
+            <source src="./content/compressed/wattsapp_3_h265.mp4" type="video/mp4; codecs=hevc">
+            <source src="./content/compressed/wattsapp_3.webm" type="video/webm; codecs=vp9">
+            <source src="./content/compressed/wattsapp_3_h264.mp4">
+          </video>
+        </div>
+      </label>
+
+      <label project="Walden Identity" theme="dark">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Walden</tt>
+          <tt class="title">Created Walden's visual identity system, inspired by Henry David Thoreau's Walden</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Walden Identity Thumbnail" src="./content/thumbnails/walden_identity.webp" />
+          <div></div>
+        </div>
+        <div class="content" style="background: #FAF8F5;">
+          <video class="contain" fetchpriority="low" muted loop playsinline>
+            <source src="./content/compressed/walden_identity_h265.mp4" type="video/mp4; codecs=hevc">
+            <source src="./content/compressed/walden_identity.webm" type="video/webm; codecs=vp9">
+            <source src="./content/compressed/walden_identity_h264.mp4">
+          </video>
+        </div>
+      </label>
+
+      <label project="Rebound App" theme="dark">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Rebound</tt>
+          <tt class="title">Developed Rebound's first-to-market exposure therapy mobile application</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Rebound Thumbnail" src="./content/thumbnails/rebound_app.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <video style="object-position: 50% 33.3%; mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0.5) 100%);" fetchpriority="high" muted loop playsinline>
+            <source src="./content/compressed/rebound_app_h265.mp4" type="video/mp4; codecs=hevc">
+            <source src="./content/compressed/rebound_app.webm" type="video/webm; codecs=vp9">
+            <source src="./content/compressed/rebound_app_h264.mp4">
+          </video>
+        </div>
+      </label>
+
+      <label project="Mortal Identity" theme="light">
+        <input type="radio" name="item" project/>
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Mortal</tt>
+          <tt class="title">Created Mortal's graphic identity, inspired by the Buddhist Maranasati practice</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Mortal Identity Thumbnail" src="./content/thumbnails/mortal_identity.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <video class="contain mortal_identity" fetchpriority="low" muted loop playsinline>
+            <source src="./content/compressed/mortal_identity_short_h265.mp4" type="video/mp4; codecs=hevc">
+            <source src="./content/compressed/mortal_identity_short_h264.mp4">
+          </video>
+        </div>
+      </label>
+
+      <label project="Mortal App" class="item" theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Mortal</tt>
+          <tt class="title">Designed & developed Mortal's death contemplation mobile application</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Mortal App Thumbnail" src="./content/thumbnails/mortal_app.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <video fetchpriority="low" muted loop playsinline>
+            <source src="./content/compressed/mortal_app_h265.mp4" type="video/mp4; codecs=hevc">
+            <source src="./content/compressed/mortal_app.webm" type="video/webm; codecs=vp9">
+            <source src="./content/compressed/mortal_app_h264.mp4">
+          </video>
+        </div>
+      </label>
+
+      <!-- <label project="OP-N Identity" theme="light"> -->
+      <!--   <input type="radio" name="item" /> -->
+      <!--   <div class="incrementor"></div> -->
+      <!--   <div class="information"> -->
+      <!--     <tt class="project">OP-N</tt> -->
+      <!--     <tt class="title">Created Open Payment Network's name & graphic identity</tt> -->
+      <!--   </div> -->
+      <!--   <div class="tab"> -->
+      <!--     <img loading="lazy" alt="OP-N Identity Thumbnail" src="./content/thumbnails/op-n_identity.webp" /> -->
+      <!--     <div></div> -->
+      <!--   </div> -->
+      <!--   <div class="content"> -->
+      <!--     <img class="contain" fetchpriority="low" alt="OP-N Identity" src="./content/compressed/op-n_identity.png" /> -->
+      <!--   </div> -->
+      <!-- </label> -->
+    </section>
+
+    <section id="about-us">
+      <div>
+        <h1><strong>OTK Studio</strong> is the design and engineering office of Oliver Thomas Klein.</h1>
+        <p>Founders and early stage companies work with us to design, build and launch new digital products.</p>
+        <p>This website logs our past work. It was built with <span id="linesOfCode">800</span> lines of native browser code and delivered to you in <span id="loadTime">0</span>ms. We believe excellence is found in uncompromising simplicity. <strong>This ethos bleeds into everything we do.</strong></p>
+      </div>
+
+      <div id="signature">
+        <img fetchpriority="low" alt="OTK Studio Logo" src="./assets/OTKStudio.webp" width="160px" height="30.19px" />
+        <table>
+          <tr><td><tt>Inquire:&nbsp;</tt></td><td><a onclick="fathom.trackEvent('Clicked Inquire')" href="mailto:office@otk.studio?subject=Inquiry"><tt class="email">office@otk.studio</tt></td></a></tr>
+          <tr><td><tt>Updates:&nbsp;</tt></td><td><a onclick="fathom.trackEvent('Clicked Updates')" href="https://instagram.com/otk.studio"><tt>IG –– @otk.studio</tt></a></td></tr>
+          <tr><td><tt>Website:&nbsp;</tt></td><td><a onclick="fathom.trackEvent('Clicked Website')" href="https://otk.studio"><tt>http://otk.studio</tt></a></td></tr>
+        </table>
+        <tt>© 2019-2024 OTK STUDIO INC</tt>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let radioInputs = document.querySelectorAll('input[type="radio"]');
+        let p = performance.getEntriesByName(window.location)[0];
+        let inactivityTimeout;
+        let cycleInterval;
+
+        const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        if (isMac && isSafari) {
+          document.querySelectorAll('source[src$=".webm"]').forEach(source => {
+            const video = source.parentElement;
+            source.remove()
+            video.load();
+          })
+        }
+
+        const loadTime = Math.round(p.responseEnd - p.requestStart);
+        fathom.trackEvent("Loaded", { _value: loadTime });
+        document.getElementById("linesOfCode").innerHTML = document.documentElement.outerHTML.split("\n").length;
+        document.getElementById("loadTime").innerHTML = loadTime;
+
+        function selectRadio(input) {
+          input.checked = true;
+          input.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+        }
+
+        function selectNextRadio() {
+          let index = Array.from(radioInputs).findIndex((radio) => radio.checked);
+          let nextIndex = (index + 1) % radioInputs.length;
+          selectRadio(radioInputs[nextIndex])
+        }
+
+        function startCycling() {
+          cycleInterval = setInterval(selectNextRadio, 3000);
+        }
+
+        function resetInactivityTimeout() {
+          clearTimeout(inactivityTimeout);
+          clearInterval(cycleInterval);
+          inactivityTimeout = setTimeout(() => window.innerWidth > 500 ? startCycling() : null , 8000);
+        }
+
+        radioInputs.forEach(input => {
+          input.addEventListener('click', resetInactivityTimeout);
+          input.addEventListener('change', (e) => e.target.parentElement.querySelectorAll("video").forEach(v => v ? v.play() : null));
+        });
+
+        window.addEventListener('resize', () => window.innerWidth <= 500 ? clearInterval(cycleInterval) : null);
+
+        if (window.innerWidth > 500) resetInactivityTimeout();
+
+        window.addEventListener("keydown", function (e) {
+          let index = Array.from(radioInputs).findIndex((radio) => radio.checked);
+          if (index === -1) index = 0;
+          if (e.key === "ArrowRight" || e.key === "l" || e.key === "d") {
+            index = (index + 1) % radioInputs.length;
+          } else if (e.key === "ArrowLeft" || e.key === "h" || e.key === "a") {
+            index = (index - 1 + radioInputs.length) % radioInputs.length;
+          }
+
+          selectRadio(radioInputs[index])
+          resetInactivityTimeout();
+        });
+
+        document.getElementById('carousel').addEventListener('scroll', function() {
+          const labels = this.querySelectorAll('label');
+          const viewportHeight = window.innerHeight;
+          const scrollTop = this.scrollTop;
+
+          labels.forEach(label => {
+            const labelRect = label.getBoundingClientRect();
+
+            if (labelRect.bottom >= 0 && labelRect.top <= 50) {
+              const radioInput = label.querySelector('input[type="radio"]');
+              if (radioInput) selectRadio(radioInput)
+            }
+          });
+        });
+
+        if (isSafari) {
+          console.log(`Designed & engineered by OTK Studio`);
+        } else {
+          console.log(`\n   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  \n   ░▒▓██████▓▒░░░▒▓█████████▓▒░▒▓█▓▒░░░▒▓█▓▒░░ \n ░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░░░░░▒▓█▓▒░░▒▓█▓▒░░ \n░▒▓█▓▒░░░░░░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░▒▓█▓▒░░  \n░▒▓█▓▒░░░░░░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓██████▓▒░░░  \n░▒▓█▓▒░░░░░░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░▒▓█▓▒░░  \n ░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░░░░░▒▓█▓▒░░▒▓█▓▒░░ \n   ░▒▓██████▓▒░░░░░░░▒▓█▓▒░░░░░▒▓█▓▒░░░▒▓█▓▒░░ \n   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  \n\n      Designed & engineered by OTK Studio \n\n`);
+        }
+      })
+    </script>
+  </body>
+</html>
