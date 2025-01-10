@@ -18,9 +18,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link rel="canonical" href="https://otk.studio" />
-    <link rel="preload" as="fetch" href="content/compressed/specter_identity_h265.mp4" type="video/mp4; codecs=hevc" crossorigin="anonymous">
-    <link rel="preload" as="fetch" href="content/compressed/specter_identity.webm" type="video/webm; codecs=vp9" crossorigin="anonymous">
-    <link rel="preload" as="fetch" href="content/compressed/specter_identity_h264.mp4" type="video/mp4" crossorigin="anonymous">
     <link rel="preload" as="font" href="fonts/Basel-Grotesk-Regular.woff2" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" as="font" href="fonts/Basel-Grotesk-Bold.woff2" type="font/woff2" crossorigin="anonymous" />
     <script src="https://cdn.usefathom.com/script.js" data-site="CGKDXWXZ" defer></script>
@@ -132,6 +129,12 @@
           font-size: 20px;
           font-weight: normal;
           letter-spacing: -0.01em;
+
+          a {
+            text-decoration: underline;
+            text-underline-offset: 3.5px;
+            text-decoration-thickness: 2px;
+          }
         }
 
         #signature {
@@ -777,9 +780,9 @@
 
     <section id="about-us">
       <div>
-        <h1><strong>OTK Studio</strong> is the design and engineering office of Oliver Thomas Klein.</h1>
-        <p>Founders and early stage companies work with us to design, build and launch new digital products.</p>
-        <p>This website logs our past work. It was built with <span id="linesOfCode">800</span> lines of native browser code and delivered to you in <span id="loadTime">0</span>ms. We believe excellence is found in uncompromising simplicity. <strong>This ethos bleeds into everything we do.</strong></p>
+        <h1><strong>OTK Studio</strong> is the independent studio practice of Oliver Thomas Klein.</h1>
+        <p>Working across both design and engineering, I’ve built distinct user experiences and the software that powers them for the last decade.</p>
+        <p>This website logs past work. Projects range from the planning of individual features to the design, development and launch of complete applications.</p>
       </div>
 
       <div id="signature">
@@ -789,7 +792,7 @@
           <tr><td><tt>Updates:&nbsp;</tt></td><td><a onclick="fathom.trackEvent('Clicked Updates')" href="https://instagram.com/otk.studio"><tt>IG –– @otk.studio</tt></a></td></tr>
           <tr><td><tt>Website:&nbsp;</tt></td><td><a onclick="fathom.trackEvent('Clicked Website')" href="https://otk.studio"><tt>http://otk.studio</tt></a></td></tr>
         </table>
-        <tt>© 2019-2024 OTK STUDIO INC</tt>
+        <tt>© 2019-2025 OTK STUDIO INC</tt>
       </div>
     </section>
 
@@ -812,8 +815,9 @@
 
         const loadTime = Math.round(p.responseEnd - p.requestStart);
         fathom.trackEvent("Loaded", { _value: loadTime });
-        document.getElementById("linesOfCode").innerHTML = document.documentElement.outerHTML.split("\n").length;
-        document.getElementById("loadTime").innerHTML = loadTime;
+        
+        // document.getElementById("linesOfCode").innerHTML = document.documentElement.outerHTML.split("\n").length;
+        // document.getElementById("loadTime").innerHTML = loadTime;
 
         function selectRadio(input) {
           input.checked = true;
