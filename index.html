@@ -51,10 +51,6 @@
         box-sizing: border-box;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
-
       body {
         margin: 0;
         padding: 0;
@@ -170,7 +166,9 @@
         display: flex;
         align-items: flex-end;
         position: relative;
+        width: 100vw;
         height: 96vh;
+        overflow: hidden;
         user-select: none;
         padding: 0 20px;
       }
@@ -248,7 +246,7 @@
           top: 0px;
           right: 0px;
           bottom: 0px;
-          left: 0px;
+          left: 200vw;
 
           video, img {
             width: 100%;
@@ -344,12 +342,21 @@
 
           .content {
             visibility: visible;
+            left: 0;
           }
 
           .tab div {
             opacity: 0.9 !important;
           }
         }
+
+        &:has(+ label input:checked),
+        &:has(input:checked) + label {
+          .content {
+            left: 0;
+          }
+        }
+
 
         .tab:hover {
           img {
@@ -455,6 +462,7 @@
           label {
             position: relative;
             scroll-snap-align: start;
+            transition: transform 0.15s ease-in-out;
             animation: bounce 2s 2s ease-in-out forwards;
 
             .content {
@@ -515,7 +523,7 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Specter</tt>
-          <tt class="title">Reenvisioned, designed & developed Specter's graphic identity & application</tt>
+          <tt class="title">Designed & developed Specter’s graphic identity & desktop application.</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Specter Identity Thumbnail" src="./content/thumbnails/specter_identity.webp" />
@@ -523,8 +531,6 @@
         </div>
         <div class="content">
           <video fetchpriority="high" autoplay muted loop playsinline poster="data:image/png;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgP9vDw4JAAAAAAT9f+0JIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADALCWlGfCj+EEwAAAAASUVORK5CYII=">
-            <source src="./content/compressed/specter_identity_h265.mp4" type="video/mp4; codecs=hevc">
-            <source src="./content/compressed/specter_identity.webm" type="video/webm; codecs=vp9">
             <source src="./content/compressed/specter_identity_h264.mp4">
           </video>
         </div>
@@ -535,7 +541,7 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Swan</tt>
-          <tt class="title">Conceptualized, designed & developed (FE) Swan's flagship custody product - Vault</tt>
+          <tt class="title">Conceptualized, designed & developed Swan’s flagship collaborative custody solution, Vault.</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Swan Vault Thumbnail" src="./content/thumbnails/swan_vault.webp" />
@@ -551,7 +557,7 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Swan</tt>
-          <tt class="title">Redesigned Swan's application with a focus on user motivation, trust building, and responsiveness.</tt>
+          <tt class="title">Redesigned Swan’s core application with a focus on user motivation, trust, and responsiveness.</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Swan Redesign Thumbnail" src="./content/thumbnails/swan_redesign.webp" />
@@ -562,23 +568,53 @@
         </div>
       </label>
 
+      <label project="WattsApp App" theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Reggie Watts</tt>
+          <tt class="title">Conceptualized, designed & developed Reggie Watts’ personal social media application, WattsApp.</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="WattsApp Thumbnail" src="./content/thumbnails/wattsapp.webp" />
+          <div></div>
+        </div>
+        <div class="content device-content">
+          <video class="device app" muted loop playsinline data-src="wattsapp_1"></video>
+          <video class="device app" muted loop playsinline data-src="wattsapp_2"></video>
+          <video class="device app" muted loop playsinline data-src="wattsapp_3"></video>
+        </div>
+      </label>
+
+      <label project="Patreon Website" theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Patreon</tt>
+          <tt class="title">Developed Patreon’s first annual creator report, State Of Create, with Porto Rocha.</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="State Of Create Video Thumbnail" src="./content/thumbnails/state_of_create_website.webp" />
+          <div></div>
+        </div>
+        <div class="content device-content">
+          <video class="device" muted loop playsinline data-src="state_of_create_website" />
+        </div>
+      </label>
+
       <label project="Programme Identity" theme="light">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Programme</tt>
-          <tt class="title">Created Programme's name & visual identity system</tt>
+          <tt class="title">Created Programme’s name & visual identity system.</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Programme Identity Thumbnail" src="./content/thumbnails/programme_identity.webp" />
           <div></div>
         </div>
         <div class="content">
-          <video class="contain" fetchpriority="low" muted loop playsinline>
-            <source src="./content/compressed/programme_identity_h265.mp4" type="video/mp4; codecs=hevc">
-            <source src="./content/compressed/programme_identity.webm" type="video/webm; codecs=vp9">
-            <source src="./content/compressed/programme_identity_h264.mp4">
-          </video>
+          <video class="contain" muted loop playsinline data-src="programme_identity" />
         </div>
       </label>
 
@@ -587,7 +623,7 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Programme</tt>
-          <tt class="title">Conceptualized, designed & developed Programme's workout generation application</tt>
+          <tt class="title">Conceptualized, designed & developed Programme’s workout generation application.</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Programme App Thumbnail" src="./content/thumbnails/programme_app.webp" />
@@ -605,18 +641,14 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Programme</tt>
-          <tt class="title">Designed & developed Programme's website</tt>
+          <tt class="title">Designed & developed Programme’s website.</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Programme Video Thumbnail" src="./content/thumbnails/programme_website.webp" />
           <div></div>
         </div>
         <div class="content device-content">
-          <video class="device" fetchpriority="low" muted loop playsinline>
-            <source src="./content/compressed/programme_website_h265.mp4" type="video/mp4; codecs=hevc">
-            <source src="./content/compressed/programme_website.webm" type="video/webm; codecs=vp9">
-            <source src="./content/compressed/programme_website_h264.mp4">
-          </video>
+          <video class="device" muted loop playsinline data-src="programme_website" />
         </div>
       </label>
       
@@ -625,7 +657,7 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Programme</tt>
-          <tt class="title">Produced & directed 1000+ exercise videos for Programme's product & website</tt>
+          <tt class="title">Produced & directed 1000+ exercise videos for Programme’s product & website.</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Programme Exercise Library Thumbnail" src="./content/thumbnails/programme_library.webp" />
@@ -652,53 +684,19 @@
       <!--   </div> -->
       <!-- </label> -->
 
-      <label project="WattsApp App" theme="light">
+      <label project="Obscura" theme="light">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">WattsApp</tt>
-          <tt class="title">Conceptualized, designed & developed Reggie Watts' personal social media application</tt>
+          <tt class="project">Obscura</tt>
+          <tt class="title">Designed & developed Obscura’s initial launch assets & website.</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="WattsApp Thumbnail" src="./content/thumbnails/wattsapp.webp" />
+          <img loading="lazy" alt="Obscura Thumbnail" src="./content/thumbnails/obscura_dark.webp" />
           <div></div>
         </div>
-        <div class="content device-content">
-          <video class="device app" fetchpriority="low" muted loop playsinline>
-            <source src="./content/compressed/wattsapp_1_h265.mp4" type="video/mp4; codecs=hevc">
-            <source src="./content/compressed/wattsapp_1.webm" type="video/webm; codecs=vp9">
-            <source src="./content/compressed/wattsapp_1_h264.mp4">
-          </video>
-          <video class="device app" fetchpriority="low" muted loop playsinline>
-            <source src="./content/compressed/wattsapp_2_h265.mp4" type="video/mp4; codecs=hevc">
-            <source src="./content/compressed/wattsapp_2.webm" type="video/webm; codecs=vp9">
-            <source src="./content/compressed/wattsapp_2_h264.mp4">
-          </video>
-          <video class="device app" fetchpriority="low" muted loop playsinline>
-            <source src="./content/compressed/wattsapp_3_h265.mp4" type="video/mp4; codecs=hevc">
-            <source src="./content/compressed/wattsapp_3.webm" type="video/webm; codecs=vp9">
-            <source src="./content/compressed/wattsapp_3_h264.mp4">
-          </video>
-        </div>
-      </label>
-
-      <label project="Walden Identity" theme="dark">
-        <input type="radio" name="item" />
-        <div class="incrementor"></div>
-        <div class="information">
-          <tt class="project">Walden</tt>
-          <tt class="title">Created Walden's visual identity system, inspired by Henry David Thoreau's Walden</tt>
-        </div>
-        <div class="tab">
-          <img loading="lazy" alt="Walden Identity Thumbnail" src="./content/thumbnails/walden_identity.webp" />
-          <div></div>
-        </div>
-        <div class="content" style="background: #FAF8F5;">
-          <video class="contain" fetchpriority="low" muted loop playsinline>
-            <source src="./content/compressed/walden_identity_h265.mp4" type="video/mp4; codecs=hevc">
-            <source src="./content/compressed/walden_identity.webm" type="video/webm; codecs=vp9">
-            <source src="./content/compressed/walden_identity_h264.mp4">
-          </video>
+        <div class="content" style="background: #1A1A1A;">
+          <video class="contain" muted loop playsinline data-src="obscura_dark" data-src-mobile="obscura_dark_mobile" />
         </div>
       </label>
 
@@ -707,18 +705,46 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Rebound</tt>
-          <tt class="title">Developed Rebound's first-to-market exposure therapy mobile application</tt>
+          <tt class="title">Developed Rebound’s first-to-market exposure therapy mobile application.</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Rebound Thumbnail" src="./content/thumbnails/rebound_app.webp" />
           <div></div>
         </div>
         <div class="content">
-          <video style="object-position: 50% 33.3%; mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0.5) 100%);" fetchpriority="high" muted loop playsinline>
-            <source src="./content/compressed/rebound_app_h265.mp4" type="video/mp4; codecs=hevc">
-            <source src="./content/compressed/rebound_app.webm" type="video/webm; codecs=vp9">
-            <source src="./content/compressed/rebound_app_h264.mp4">
-          </video>
+          <video style="object-position: 50% 33.3%; mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0.5) 100%);" muted loop playsinline data-src="rebound_app" />
+        </div>
+      </label>
+
+      <label project="OP-N Identity" theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">OP-N</tt>
+          <tt class="title">Created Open Payment Network’s name & graphic identity.</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="OP-N Identity Thumbnail" src="./content/thumbnails/op-n_identity.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <img class="contain" fetchpriority="low" alt="OP-N Identity" src="./content/compressed/op-n_identity.png" />
+        </div>
+      </label>
+
+      <label project="Walden Identity" theme="dark">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Walden</tt>
+          <tt class="title">Created Walden’s visual identity system, inspired by Henry David Thoreau’s Walden.</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Walden Identity Thumbnail" src="./content/thumbnails/walden_identity.webp" />
+          <div></div>
+        </div>
+        <div class="content" style="background: #FAF8F5;">
+          <video class="contain" muted loop playsinline data-src="walden_identity" />
         </div>
       </label>
 
@@ -727,17 +753,14 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Mortal</tt>
-          <tt class="title">Created Mortal's graphic identity, inspired by the Buddhist Maranasati practice</tt>
+          <tt class="title">Created Mortal’s graphic identity, inspired by the Buddhist Maranasati practice.</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Mortal Identity Thumbnail" src="./content/thumbnails/mortal_identity.webp" />
           <div></div>
         </div>
         <div class="content">
-          <video class="contain mortal_identity" fetchpriority="low" muted loop playsinline>
-            <source src="./content/compressed/mortal_identity_short_h265.mp4" type="video/mp4; codecs=hevc">
-            <source src="./content/compressed/mortal_identity_short_h264.mp4">
-          </video>
+          <video class="contain mortal_identity" muted loop playsinline data-src="mortal_identity_short" />
         </div>
       </label>
 
@@ -746,42 +769,22 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Mortal</tt>
-          <tt class="title">Designed & developed Mortal's death contemplation mobile application</tt>
+          <tt class="title">Designed & developed Mortal’s death contemplation mobile application.</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Mortal App Thumbnail" src="./content/thumbnails/mortal_app.webp" />
           <div></div>
         </div>
         <div class="content">
-          <video fetchpriority="low" muted loop playsinline>
-            <source src="./content/compressed/mortal_app_h265.mp4" type="video/mp4; codecs=hevc">
-            <source src="./content/compressed/mortal_app.webm" type="video/webm; codecs=vp9">
-            <source src="./content/compressed/mortal_app_h264.mp4">
-          </video>
+          <video muted loop playsinline data-src="mortal_app" />
         </div>
       </label>
-
-      <!-- <label project="OP-N Identity" theme="light"> -->
-      <!--   <input type="radio" name="item" /> -->
-      <!--   <div class="incrementor"></div> -->
-      <!--   <div class="information"> -->
-      <!--     <tt class="project">OP-N</tt> -->
-      <!--     <tt class="title">Created Open Payment Network's name & graphic identity</tt> -->
-      <!--   </div> -->
-      <!--   <div class="tab"> -->
-      <!--     <img loading="lazy" alt="OP-N Identity Thumbnail" src="./content/thumbnails/op-n_identity.webp" /> -->
-      <!--     <div></div> -->
-      <!--   </div> -->
-      <!--   <div class="content"> -->
-      <!--     <img class="contain" fetchpriority="low" alt="OP-N Identity" src="./content/compressed/op-n_identity.png" /> -->
-      <!--   </div> -->
-      <!-- </label> -->
     </section>
 
     <section id="about-us">
       <div>
         <h1><strong>OTK Studio</strong> is the independent studio practice of Oliver Thomas Klein.</h1>
-        <p>Working across both design and engineering, I’ve built distinct user experiences and the software that powers them for the last decade.</p>
+        <p>Spanning both design and engineering, I build product experiences and the software that powers them.</p>
         <p>This website logs past work. Projects range from the planning of individual features to the design, development and launch of complete applications.</p>
       </div>
 
@@ -798,26 +801,31 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        let radioInputs = document.querySelectorAll('input[type="radio"]');
-        let p = performance.getEntriesByName(window.location)[0];
+        const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        const carousel = document.getElementById('carousel');
+        const labels = document.querySelectorAll('label');
+        const videos = document.querySelectorAll('video');
+        const radioInputs = document.querySelectorAll('input[type="radio"]');
+        const p = performance.getEntriesByName(window.location)[0];
+        const loadTime = Math.round(p.responseEnd - p.requestStart);
         let inactivityTimeout;
         let cycleInterval;
 
-        const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        /*
         if (isMac && isSafari) {
           document.querySelectorAll('source[src$=".webm"]').forEach(source => {
             const video = source.parentElement;
             source.remove()
             video.load();
+            video.play();
           })
         }
+        */
 
-        const loadTime = Math.round(p.responseEnd - p.requestStart);
-        fathom.trackEvent("Loaded", { _value: loadTime });
-        
         // document.getElementById("linesOfCode").innerHTML = document.documentElement.outerHTML.split("\n").length;
         // document.getElementById("loadTime").innerHTML = loadTime;
+        fathom.trackEvent("Loaded", { _value: loadTime });
 
         function selectRadio(input) {
           input.checked = true;
@@ -837,12 +845,11 @@
         function resetInactivityTimeout() {
           clearTimeout(inactivityTimeout);
           clearInterval(cycleInterval);
-          inactivityTimeout = setTimeout(() => window.innerWidth > 500 ? startCycling() : null , 8000);
+          inactivityTimeout = setTimeout(() => window.innerWidth > 500 ? startCycling() : null , 20000);
         }
 
         radioInputs.forEach(input => {
           input.addEventListener('click', resetInactivityTimeout);
-          input.addEventListener('change', (e) => e.target.parentElement.querySelectorAll("video").forEach(v => v ? v.play() : null));
         });
 
         window.addEventListener('resize', () => window.innerWidth <= 500 ? clearInterval(cycleInterval) : null);
@@ -862,20 +869,98 @@
           resetInactivityTimeout();
         });
 
-        document.getElementById('carousel').addEventListener('scroll', function() {
-          const labels = this.querySelectorAll('label');
-          const viewportHeight = window.innerHeight;
-          const scrollTop = this.scrollTop;
+        const themeObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const radioInput = entry.target.querySelector('input[type="radio"]');
+              if (radioInput) {
+                selectRadio(radioInput)
+              }
+            }
+          })
+        }, {
+          root: carousel,
+          rootMargin: `-50px 0px -${carousel.offsetHeight - 50}px 0px`,
+          threshold: 0,
+        });
 
-          labels.forEach(label => {
-            const labelRect = label.getBoundingClientRect();
-
-            if (labelRect.bottom >= 0 && labelRect.top <= 50) {
-              const radioInput = label.querySelector('input[type="radio"]');
-              if (radioInput) selectRadio(radioInput)
+        const videoLoadingObserver = new IntersectionObserver((entries) => {
+          entries.forEach(({ target: video, isIntersecting }) => {
+            if (video.dataset.src) {
+              if (isIntersecting) {
+                loadVideo(video);
+              } else {
+                unloadVideo(video);
+              }
             }
           });
+        }, { 
+          root: carousel,
+          rootMargin: `${carousel.offsetHeight - 20}px 0px ${carousel.offsetHeight - 20}px 0px`,
+          threshold: 0,
         });
+
+        /*
+        const videoPlayingObserver = new IntersectionObserver((entries) => {
+          entries.forEach(({ target: video, isIntersecting }) => {
+            if (isIntersecting) {
+              video.play();
+            } else {
+              video.pause();
+            }
+          });
+        }, { 
+          root: carousel,
+          threshold: 0,
+        });
+        */
+
+        function loadVideo(video) {
+          let src = "./content/compressed/";
+
+          if (window.innerWidth < 575 && video.dataset.srcMobile) {
+            src = src + video.dataset.srcMobile;
+          } else {
+            src = src + video.dataset.src;
+          }
+
+          const formats = {
+            "video/mp4; codecs=hevc": "_h265.mp4",
+            "video/webm; codecs=vp9": ".webm",
+            "video/mp4; codecs=avc1": "_h264.mp4" 
+          };
+
+          if (isMac && isSafari) {
+            delete formats["video/webm; codecs=vp9"]
+          }
+
+          const format = Object.keys(formats).find(format => video.canPlayType(format) !== '');
+
+          video.src = src + formats[format];
+          video.load();
+          video.play();
+        }
+
+        function unloadVideo(video) {
+          video.src = '';
+          video.load();
+        }
+
+        labels.forEach(label => themeObserver.observe(label));
+        videos.forEach(video => {
+          videoLoadingObserver.observe(video)
+          // videoPlayingObserver.observe(video)
+        });
+
+        carousel.addEventListener('scroll', function() {
+          labels.forEach(label => {
+            const currentTransform = new WebKitCSSMatrix(window.getComputedStyle(label).webkitTransform); 
+            const currentTranslateY = currentTransform.m42;
+            label.style.animation = "none";
+            label.style.transform = `translateY(${currentTranslateY}px)`
+            setTimeout(() => label.style.transform = "translateY(0)", 0);
+          });
+        }, { once: true });
 
         if (isSafari) {
           console.log(`Designed & engineered by OTK Studio`);
