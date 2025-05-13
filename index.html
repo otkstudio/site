@@ -552,7 +552,7 @@
           <div></div>
         </div>
         <div class="content" style="background: #DDD;">
-          <img class="contain" fetchpriority="low" alt="Specter Desktop" src="./content/compressed/specter_onboarding.webp" />
+          <img class="contain" style="mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);" fetchpriority="low" alt="Specter Desktop" src="./content/compressed/specter_onboarding.webp" />
         </div>
       </label>
 
@@ -568,7 +568,7 @@
           <div></div>
         </div>
         <div class="content device-content">
-          <video preload="none" class="device" muted loop playsinline data-src="state_of_create_website" />
+          <video class="device" fetchpriority="high" muted loop playsinline data-src="state_of_create_website" poster="./content/compressed/state_of_create_website-poster.webp" />
         </div>
       </label>
 
@@ -584,7 +584,7 @@
           <div></div>
         </div>
         <div class="content">
-          <img class="left-align" fetchpriority="low" alt="Swan Vault" src="./content/compressed/swan_transactions.webp" />
+          <img class="left-align" style="mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 95%);" fetchpriority="low" alt="Swan Vault" src="./content/compressed/swan_transactions.webp" />
         </div>
       </label>
 
@@ -600,7 +600,7 @@
           <div></div>
         </div>
         <div class="content device-content" style="padding: 20px 20px 0px; align-items: flex-end;">
-          <img style="border-bottom: 0px; border-radius: 16px 16px 0 0; mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0.2) 95%)" fetchpriority="low" class="contain device" alt="Swan Redesign" src="./content/compressed/swan_redesign.webp" />
+          <img style="border-bottom: 0px; border-radius: 16px 16px 0 0; mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0.2) 95%)" fetchpriority="low" class="contain device" alt="Swan Redesign" src="./content/compressed/swan_redesign.webp" />
         </div>
       </label>
 
@@ -632,9 +632,9 @@
           <div></div>
         </div>
         <div class="content device-content">
-          <video preload="none" class="device app" muted loop playsinline data-src="wattsapp_1"></video>
-          <video preload="none" class="device app" muted loop playsinline data-src="wattsapp_2"></video>
-          <video preload="none" class="device app" muted loop playsinline data-src="wattsapp_3"></video>
+          <video class="device app" fetchpriority="high" muted loop playsinline data-src="wattsapp_1" poster="./content/compressed/wattsapp_1-poster.webp"></video>
+          <video class="device app" fetchpriority="high" muted loop playsinline data-src="wattsapp_2" poster="./content/compressed/wattsapp_2-poster.webp"></video>
+          <video class="device app" fetchpriority="high" muted loop playsinline data-src="wattsapp_3" poster="./content/compressed/wattsapp_3-poster.webp"></video>
         </div>
       </label>
 
@@ -643,7 +643,7 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Cosign</tt>
-          <tt class="title">Conceptualized & designed social-custody bitcoin product, Cosign</tt>
+          <tt class="title">Conceptualized & prototyped social-custody bitcoin product, Cosign</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Cosign Thumbnail" src="./content/thumbnails/cosign.webp" />
@@ -702,42 +702,10 @@
           <div></div>
         </div>
         <div class="content device-content">
-          <video preload="none" class="device" muted loop playsinline data-src="programme_website" />
+          <video class="device" fetchpriority="high" muted loop playsinline data-src="programme_website" poster="./content/compressed/programme_website-poster.webp"/>
         </div>
       </label>
       
-      <!-- <label project="Programme Exercise Library" theme="light"> -->
-      <!--   <input type="radio" name="item" /> -->
-      <!--   <div class="incrementor"></div> -->
-      <!--   <div class="information"> -->
-      <!--     <tt class="project">Programme</tt> -->
-      <!--     <tt class="title">Produced & directed 1000+ exercise videos for Programme’s product & website.</tt> -->
-      <!--   </div> -->
-      <!--   <div class="tab"> -->
-      <!--     <img loading="lazy" alt="Programme Exercise Library Thumbnail" src="./content/thumbnails/programme_library.webp" /> -->
-      <!--     <div></div> -->
-      <!--   </div> -->
-      <!--   <div class="content"> -->
-      <!--     <img style="object-position: 50% 15%;" fetchpriority="low" alt="Programme Exercise Library Behind The Scenes" src="./content/compressed/programme_library.webp" /> -->
-      <!--   </div> -->
-      <!-- </label> -->
-
-      <!-- <label project="Programme Marketing" theme="neutral"> -->
-      <!--   <input type="radio" name="item" /> -->
-      <!--   <div class="incrementor"></div> -->
-      <!--   <div class="information"> -->
-      <!--     <tt class="project">Programme</tt> -->
-      <!--     <tt class="title">Directed & photographed Programme's social campaigns</tt> -->
-      <!--   </div> -->
-      <!--   <div class="tab"> -->
-      <!--     <img loading="lazy" alt="Programme Photography Thumbnail" src="./content/thumbnails/programme_photography.webp" /> -->
-      <!--     <div></div> -->
-      <!--   </div> -->
-      <!--   <div class="content"> -->
-      <!--     <img fetchpriority="low" alt="Man jumping" src="./content/compressed/programme_photography.webp" /> -->
-      <!--   </div> -->
-      <!-- </label> -->
-
       <label project="Obscura" theme="light">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
@@ -770,22 +738,6 @@
         </div>
       </label>
 
-      <!-- <label project="OP-N Identity" theme="light"> -->
-      <!--   <input type="radio" name="item" /> -->
-      <!--   <div class="incrementor"></div> -->
-      <!--   <div class="information"> -->
-      <!--     <tt class="project">OP-N</tt> -->
-      <!--     <tt class="title">Created Open Payment Network’s name & graphic identity.</tt> -->
-      <!--   </div> -->
-      <!--   <div class="tab"> -->
-      <!--     <img loading="lazy" alt="OP-N Identity Thumbnail" src="./content/thumbnails/op-n_identity.webp" /> -->
-      <!--     <div></div> -->
-      <!--   </div> -->
-      <!--   <div class="content"> -->
-      <!--     <img class="contain" fetchpriority="low" alt="OP-N Identity" src="./content/compressed/op-n_identity.png" /> -->
-      <!--   </div> -->
-      <!-- </label> -->
-
       <label project="Walden Identity" theme="dark">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
@@ -801,22 +753,6 @@
           <video preload="none" class="contain" muted loop playsinline data-src="walden_identity" />
         </div>
       </label>
-
-      <!-- <label project="Mortal Identity" theme="light"> -->
-      <!--   <input type="radio" name="item" project/> -->
-      <!--   <div class="incrementor"></div> -->
-      <!--   <div class="information"> -->
-      <!--     <tt class="project">Mortal</tt> -->
-      <!--     <tt class="title">Created Mortal’s graphic identity, inspired by the Buddhist Maranasati practice.</tt> -->
-      <!--   </div> -->
-      <!--   <div class="tab"> -->
-      <!--     <img loading="lazy" alt="Mortal Identity Thumbnail" src="./content/thumbnails/mortal_identity.webp" /> -->
-      <!--     <div></div> -->
-      <!--   </div> -->
-      <!--   <div class="content"> -->
-      <!--     <video preload="none" class="contain mortal_identity" muted loop playsinline data-src="mortal_identity_short" /> -->
-      <!--   </div> -->
-      <!-- </label> -->
 
       <label project="Mortal App" class="item" theme="light">
         <input type="radio" name="item" />
@@ -838,7 +774,8 @@
     <section id="about-us">
       <div>
         <h1><strong>OTK Studio</strong> is the independent studio practice of Oliver Thomas Klein.</h1>
-        <p>Spanning both design and engineering, I build product experiences and the software that powers them.</p>
+        <p>Spanning both design and engineering, I build products–and the software that powers them.</p>
+        <p>This website logs past work. It was written in <span id="linesOfCode"></span> lines of native browser code and delivered to you in <span id="loadTime"></span>ms. I believe excellence is found in uncompromising simplicity. <strong>This ethos guides everything I do.</strong></p>
       </div>
 
       <div id="signature">
@@ -853,6 +790,12 @@
     </section>
 
     <script>
+      let lowFidelityloadTime;
+
+      document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") lowFidelityloadTime = Math.round(performance.now());
+      });
+
       document.addEventListener("DOMContentLoaded", () => {
         const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
         const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -861,24 +804,13 @@
         const videos = document.querySelectorAll('video');
         const radioInputs = document.querySelectorAll('input[type="radio"]');
         const p = performance.getEntriesByName(window.location)[0];
-        const loadTime = Math.round(p.responseEnd - p.requestStart);
+        const highFidelityloadTime = Math.round(p.responseEnd - p.requestStart);
         let inactivityTimeout;
         let cycleInterval;
 
-        /*
-        if (isMac && isSafari) {
-          document.querySelectorAll('source[src$=".webm"]').forEach(source => {
-            const video = source.parentElement;
-            source.remove()
-            video.load();
-            video.play();
-          })
-        }
-        */
-
-        // document.getElementById("linesOfCode").innerHTML = document.documentElement.outerHTML.split("\n").length;
-        // document.getElementById("loadTime").innerHTML = loadTime;
-        fathom.trackEvent("Loaded", { _value: loadTime });
+        fathom.trackEvent("Loaded", { _value: highFidelityloadTime });
+        document.getElementById("loadTime").innerHTML = highFidelityloadTime > lowFidelityloadTime ? lowFidelityloadTime : highFidelityloadTime;
+        document.getElementById("linesOfCode").innerHTML = document.documentElement.outerHTML.split("\n").length;
 
         function selectRadio(input) {
           input.checked = true;
@@ -950,24 +882,9 @@
           });
         }, { 
           root: carousel,
-          rootMargin: `${carousel.offsetHeight - 20}px 0px ${carousel.offsetHeight - 20}px 0px`,
+          rootMargin: `${carousel.offsetHeight}px 0px ${carousel.offsetHeight}px 0px`,
           threshold: 0,
         });
-
-        /*
-        const videoPlayingObserver = new IntersectionObserver((entries) => {
-          entries.forEach(({ target: video, isIntersecting }) => {
-            if (isIntersecting) {
-              video.play();
-            } else {
-              video.pause();
-            }
-          });
-        }, { 
-          root: carousel,
-          threshold: 0,
-        });
-        */
 
         function loadVideo(video) {
           let src = "./content/compressed/";
@@ -991,20 +908,15 @@
           const format = Object.keys(formats).find(format => video.canPlayType(format) !== '');
 
           video.src = src + formats[format];
-          video.load();
           video.play();
         }
 
         function unloadVideo(video) {
           video.src = '';
-          video.load();
         }
 
         labels.forEach(label => themeObserver.observe(label));
-        videos.forEach(video => {
-          videoLoadingObserver.observe(video)
-          // videoPlayingObserver.observe(video)
-        });
+        videos.forEach(video => videoLoadingObserver.observe(video));
 
         carousel.addEventListener('scroll', function() {
           labels.forEach(label => {
@@ -1016,11 +928,7 @@
           });
         }, { once: true });
 
-        if (isSafari) {
-          console.log(`Designed & engineered by OTK Studio`);
-        } else {
-          console.log(`\n   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  \n   ░▒▓██████▓▒░░░▒▓█████████▓▒░▒▓█▓▒░░░▒▓█▓▒░░ \n ░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░░░░░▒▓█▓▒░░▒▓█▓▒░░ \n░▒▓█▓▒░░░░░░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░▒▓█▓▒░░  \n░▒▓█▓▒░░░░░░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓██████▓▒░░░  \n░▒▓█▓▒░░░░░░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░▒▓█▓▒░░  \n ░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░░░░░▒▓█▓▒░░▒▓█▓▒░░ \n   ░▒▓██████▓▒░░░░░░░▒▓█▓▒░░░░░▒▓█▓▒░░░▒▓█▓▒░░ \n   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  \n\n      Designed & engineered by OTK Studio \n\n`);
-        }
+        console.log(isSafari ? `Designed & engineered by OTK Studio` : `\n   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  \n   ░▒▓██████▓▒░░░▒▓█████████▓▒░▒▓█▓▒░░░▒▓█▓▒░░ \n ░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░░░░░▒▓█▓▒░░▒▓█▓▒░░ \n░▒▓█▓▒░░░░░░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░▒▓█▓▒░░  \n░▒▓█▓▒░░░░░░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓██████▓▒░░░  \n░▒▓█▓▒░░░░░░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░▒▓█▓▒░░  \n ░▒▓█▓▒░░░░▒▓█▓▒░░░░░▒▓█▓▒░░░░░▒▓█▓▒░░▒▓█▓▒░░ \n   ░▒▓██████▓▒░░░░░░░▒▓█▓▒░░░░░▒▓█▓▒░░░▒▓█▓▒░░ \n   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  \n\n      Designed & engineered by OTK Studio \n\n`);
       })
     </script>
   </body>
