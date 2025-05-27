@@ -68,6 +68,7 @@
 
       #identity {
         display: flex;
+        opacity: 1;
         flex-direction: column;
         gap: 6px;
         width: 114px;
@@ -78,6 +79,7 @@
         pointer-events: none;
         user-select: none;
         color: #777;
+        transition: opacity 0.4s ease-in-out;
         img {
           width: 136px;
           height: 55px;
@@ -97,6 +99,10 @@
 
       #identity:has(~ #carousel label[theme="dark"] input:checked) > img {
         filter: invert(100%);
+      }
+
+      #identity.hud-hidden {
+        opacity: 0;
       }
 
       #about-us {
@@ -159,6 +165,13 @@
         padding: 0 20px;
       }
 
+      #carousel.hud-hidden {
+        .information, .tab {
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+
       label {
         z-index: 1;
         flex-grow: 1;
@@ -184,6 +197,7 @@
           justify-content: flex-end;
           cursor: pointer;
           position: relative;
+          transition: opacity 0.4s ease-in-out;
 
           img {
             visibility: hidden;
@@ -349,9 +363,10 @@
           right: 20px;
           bottom: 20px;
           left: 20px;
-          opacity: 0;
+          visibility: hidden;
           pointer-events: none;
           z-index: 3;
+          transition: opacity 0.4s ease-in-out;
         }
 
         &[theme="light"] {
@@ -383,7 +398,7 @@
           z-index: 0;
 
           .information {
-            opacity: 1;
+            visibility: visible;
           }
 
           .content {
@@ -522,14 +537,14 @@
             }
 
             .information {
-              opacity: 1;
+              visibility: visible;
               display: grid;
               grid-template-columns: 1fr;
             }
 
             .tab,
             .incrementor,
-            .project {
+            .title {
               display: none;
             }
           }
@@ -563,19 +578,37 @@
         </div>
       </label>
 
+      <!-- <label theme="dark"> -->
+      <!--   <input type="radio" name="item" /> -->
+      <!--   <div class="incrementor"></div> -->
+      <!--   <div class="information"> -->
+      <!--     <tt class="project">Specter</tt> -->
+      <!--     <tt class="title">Design & engineering for Specter 2.0</tt> -->
+      <!--   </div> -->
+      <!--   <div class="tab"> -->
+      <!--     <img loading="lazy" alt="Specter Desktop Thumbnail" src="./content/thumbnails/specter_onboarding.webp" /> -->
+      <!--     <div></div> -->
+      <!--   </div> -->
+      <!--   <div class="content" style="background: #DDD;"> -->
+      <!--     <img class="contain fade-out-bottom" fetchpriority="low" alt="Specter Desktop" src="./content/compressed/specter_onboarding.webp" /> -->
+      <!--   </div> -->
+      <!-- </label> -->
+
       <label theme="dark">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Specter</tt>
-          <tt class="title">Design & engineering for Specter 2.0</tt>
+          <tt class="project">Coins</tt>
+          <tt class="title">Product design for bitcoin wallet, Coins</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Specter Desktop Thumbnail" src="./content/thumbnails/specter_onboarding.webp" />
+          <img loading="lazy" alt="Coins Thumbnail" src="./content/thumbnails/coins.webp" />
           <div></div>
         </div>
-        <div class="content" style="background: #DDD;">
-          <img class="contain fade-out-bottom" fetchpriority="low" alt="Specter Desktop" src="./content/compressed/specter_onboarding.webp" />
+        <div class="content">
+          <img class="device app" alt="Coins" src="./content/compressed/coins_1.webp" />
+          <img class="device app" alt="Coins" src="./content/compressed/coins_2.webp" />
+          <img class="device app" alt="Coins" src="./content/compressed/coins_3.webp" />
         </div>
       </label>
 
@@ -599,49 +632,15 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Swan</tt>
-          <tt class="title">Design for Swan’s core application redesign, improving trust, transparency, and responsiveness</tt>
+          <tt class="project">Walden</tt>
+          <tt class="title">Graphic identity system for Walden, inspired by Henry David Thoreau’s Walden</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Swan Transactions Thumbnail" src="./content/thumbnails/swan_transactions.webp" />
+          <img loading="lazy" alt="Walden Identity Thumbnail" src="./content/thumbnails/walden_identity.webp" />
           <div></div>
         </div>
-        <div class="content">
-          <img class="cover left-align fade-out-bottom" fetchpriority="low" alt="Swan Vault" src="./content/compressed/swan_transactions.webp" />
-        </div>
-      </label>
-
-      <label theme="light">
-        <input type="radio" name="item" />
-        <div class="incrementor"></div>
-        <div class="information">
-          <tt class="project">Cosign</tt>
-          <tt class="title">Design & prototyping for social-custody based bitcoin wallet, Cosign</tt>
-        </div>
-        <div class="tab">
-          <img loading="lazy" alt="Cosign Thumbnail" src="./content/thumbnails/cosign.webp" />
-          <div></div>
-        </div>
-        <div class="content">
-          <img class="device app" alt="Cosign" src="./content/compressed/cosign_1.webp" />
-          <img class="device app" alt="Cosign" src="./content/compressed/cosign_2.webp" />
-          <img class="device app" alt="Cosign" src="./content/compressed/cosign_3.webp" />
-        </div>
-      </label>
-
-      <label theme="dark">
-        <input type="radio" name="item" />
-        <div class="incrementor"></div>
-        <div class="information">
-          <tt class="project">Swan</tt>
-          <tt class="title">Design & engineering for Swan’s collaborative custody product, Vault</tt>
-        </div>
-        <div class="tab">
-          <img loading="lazy" alt="Swan Vault Thumbnail" src="./content/thumbnails/swan_vault.webp" />
-          <div></div>
-        </div>
-        <div class="content">
-          <img class="device" alt="Swan Vault" src="./content/compressed/swan_vault.webp" />
+        <div class="content walden-bg">
+          <div class="video contain" data-src="walden_identity"><img /></div>
         </div>
       </label>
 
@@ -662,6 +661,38 @@
           <div class="video device app" data-src="wattsapp_3"><img /></div>
         </div>
       </label>
+
+      <label theme="dark">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Swan</tt>
+          <tt class="title">Design for Swan’s core application redesign, improving trust, transparency, and responsiveness</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Swan Transactions Thumbnail" src="./content/thumbnails/swan_transactions.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <img class="cover left-align fade-out-bottom" fetchpriority="low" alt="Swan Transactions" src="./content/compressed/swan_transactions.webp" />
+        </div>
+      </label>
+
+      <!-- <label theme="dark"> -->
+      <!--   <input type="radio" name="item" /> -->
+      <!--   <div class="incrementor"></div> -->
+      <!--   <div class="information"> -->
+      <!--     <tt class="project">Swan</tt> -->
+      <!--     <tt class="title">Design & engineering for Swan’s collaborative custody product, Vault</tt> -->
+      <!--   </div> -->
+      <!--   <div class="tab"> -->
+      <!--     <img loading="lazy" alt="Swan Vault Thumbnail" src="./content/thumbnails/swan_vault.webp" /> -->
+      <!--     <div></div> -->
+      <!--   </div> -->
+      <!--   <div class="content"> -->
+      <!--     <img class="device" alt="Swan Vault" src="./content/compressed/swan_vault.webp" /> -->
+      <!--   </div> -->
+      <!-- </label> -->
 
       <label theme="light">
         <input type="radio" name="item" />
@@ -761,22 +792,6 @@
         </div>
       </label>
 
-      <label theme="dark">
-        <input type="radio" name="item" />
-        <div class="incrementor"></div>
-        <div class="information">
-          <tt class="project">Walden</tt>
-          <tt class="title">Graphic identity system for Walden, inspired by Henry David Thoreau’s Walden</tt>
-        </div>
-        <div class="tab">
-          <img loading="lazy" alt="Walden Identity Thumbnail" src="./content/thumbnails/walden_identity.webp" />
-          <div></div>
-        </div>
-        <div class="content walden-bg">
-          <div class="video contain" data-src="walden_identity"><img /></div>
-        </div>
-      </label>
-
       <label theme="light">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
@@ -819,6 +834,10 @@
         const radioInputs = document.querySelectorAll('input[type="radio"]');
         const videos = document.querySelectorAll('.video');
         const p = performance.getEntriesByName(window.location)[0];
+        const identity = document.getElementById('identity');
+        const carousel = document.getElementById('carousel');
+        const tabs = document.querySelectorAll('.tab');
+        const informationElements = document.querySelectorAll('.information');
 
         let cycleInterval;
         let inactivityTimeout;
@@ -883,7 +902,7 @@
               }
             }
           });
-        }, { threshold: 0.8 });
+        }, { threshold: 0.5 });
 
 
         function getVideoSource(video, dataset) {
@@ -910,17 +929,33 @@
         }
 
         function startCyclingProjects() {
+          if (window.innerWidth <= 500) {
+            return;
+          }
+
+          hideHUD();
+
           cycleInterval = setInterval(() => {
             let index = Array.from(radioInputs).findIndex((radio) => radio.checked);
             let nextIndex = (index + 1) % radioInputs.length;
             selectProject(radioInputs[nextIndex])
-          }, 3000);
+          }, 500);
         }
 
         function pauseCyclingProjects() {
+          if (window.innerWidth <= 500) {
+            return;
+          }
+
+          showHUD();
+
           clearTimeout(inactivityTimeout);
           clearInterval(cycleInterval);
-          inactivityTimeout = setTimeout(startCyclingProjects, 10000);
+        
+          inactivityTimeout = setTimeout(() => {
+            hideHUD();
+            startCyclingProjects();
+          }, 8000);
         }
 
         function handleKeydown(e) {
@@ -936,12 +971,26 @@
           pauseCyclingProjects();
         }
 
+        function showHUD() {
+          identity.classList.remove('hud-hidden');
+          carousel.classList.remove('hud-hidden');
+        }
+
+        function hideHUD() {
+          identity.classList.add('hud-hidden');
+          carousel.classList.add('hud-hidden');
+        }
+
         function init() {
+          showHUD();
+
           clearInterval(cycleInterval);
           clearTimeout(inactivityTimeout);
 
           if (window.innerWidth > 500) {
-            startCyclingProjects();
+            inactivityTimeout = setTimeout(() => {
+              startCyclingProjects();
+            }, 8000);
           }
 
           radioInputs.forEach((input, index) => {
@@ -957,6 +1006,8 @@
 
         window.addEventListener("resize", init);
         window.addEventListener("keydown", handleKeydown);
+        carousel.addEventListener("click", pauseCyclingProjects);
+        carousel.addEventListener("mousemove", pauseCyclingProjects);
 
         videos.forEach(video => {
           const src = window.innerWidth <= 500 && video.dataset.srcMobile ? video.dataset.srcMobile : video.dataset.src;
