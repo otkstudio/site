@@ -68,6 +68,7 @@
 
       #identity {
         display: flex;
+        opacity: 1;
         flex-direction: column;
         gap: 6px;
         width: 114px;
@@ -78,6 +79,7 @@
         pointer-events: none;
         user-select: none;
         color: #777;
+        transition: opacity 0.4s ease-in-out;
         img {
           width: 136px;
           height: 55px;
@@ -97,6 +99,10 @@
 
       #identity:has(~ #carousel label[theme="dark"] input:checked) > img {
         filter: invert(100%);
+      }
+
+      #identity.hud-hidden {
+        opacity: 0;
       }
 
       #about-us {
@@ -159,6 +165,13 @@
         padding: 0 20px;
       }
 
+      #carousel.hud-hidden {
+        .information, .tab {
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+
       label {
         z-index: 1;
         flex-grow: 1;
@@ -184,6 +197,7 @@
           justify-content: flex-end;
           cursor: pointer;
           position: relative;
+          transition: opacity 0.4s ease-in-out;
 
           img {
             visibility: hidden;
@@ -349,9 +363,10 @@
           right: 20px;
           bottom: 20px;
           left: 20px;
-          opacity: 0;
+          visibility: hidden;
           pointer-events: none;
           z-index: 3;
+          transition: opacity 0.4s ease-in-out;
         }
 
         &[theme="light"] {
@@ -383,7 +398,7 @@
           z-index: 0;
 
           .information {
-            opacity: 1;
+            visibility: visible;
           }
 
           .content {
@@ -522,7 +537,7 @@
             }
 
             .information {
-              opacity: 1;
+              visibility: visible;
               display: grid;
               grid-template-columns: 1fr;
             }
@@ -819,6 +834,10 @@
         const radioInputs = document.querySelectorAll('input[type="radio"]');
         const videos = document.querySelectorAll('.video');
         const p = performance.getEntriesByName(window.location)[0];
+        const identity = document.getElementById('identity');
+        const carousel = document.getElementById('carousel');
+        const tabs = document.querySelectorAll('.tab');
+        const informationElements = document.querySelectorAll('.information');
 
         let cycleInterval;
         let inactivityTimeout;
@@ -910,17 +929,33 @@
         }
 
         function startCyclingProjects() {
+          if (window.innerWidth <= 500) {
+            return;
+          }
+
+          hideHUD();
+
           cycleInterval = setInterval(() => {
             let index = Array.from(radioInputs).findIndex((radio) => radio.checked);
             let nextIndex = (index + 1) % radioInputs.length;
             selectProject(radioInputs[nextIndex])
-          }, 3000);
+          }, 500);
         }
 
         function pauseCyclingProjects() {
+          if (window.innerWidth <= 500) {
+            return;
+          }
+
+          showHUD();
+
           clearTimeout(inactivityTimeout);
           clearInterval(cycleInterval);
-          inactivityTimeout = setTimeout(startCyclingProjects, 10000);
+        
+          inactivityTimeout = setTimeout(() => {
+            hideHUD();
+            startCyclingProjects();
+          }, 8000);
         }
 
         function handleKeydown(e) {
@@ -936,12 +971,26 @@
           pauseCyclingProjects();
         }
 
+        function showHUD() {
+          identity.classList.remove('hud-hidden');
+          carousel.classList.remove('hud-hidden');
+        }
+
+        function hideHUD() {
+          identity.classList.add('hud-hidden');
+          carousel.classList.add('hud-hidden');
+        }
+
         function init() {
+          showHUD();
+
           clearInterval(cycleInterval);
           clearTimeout(inactivityTimeout);
 
           if (window.innerWidth > 500) {
-            startCyclingProjects();
+            inactivityTimeout = setTimeout(() => {
+              startCyclingProjects();
+            }, 8000);
           }
 
           radioInputs.forEach((input, index) => {
@@ -957,6 +1006,8 @@
 
         window.addEventListener("resize", init);
         window.addEventListener("keydown", handleKeydown);
+        carousel.addEventListener("click", pauseCyclingProjects);
+        carousel.addEventListener("mousemove", pauseCyclingProjects);
 
         videos.forEach(video => {
           const src = window.innerWidth <= 500 && video.dataset.srcMobile ? video.dataset.srcMobile : video.dataset.src;
