@@ -604,7 +604,7 @@
           <div></div>
         </div>
         <div class="content">
-          <div class="video cover" data-src="rain_identity"><img /></div>
+          <div class="video cover" data-src="rain_1"><img /></div>
         </div>
       </label>
 
@@ -634,7 +634,7 @@
           <div></div>
         </div>
         <div class="content">
-          <div class="video cover" data-src="rain_icon"><img /></div>
+          <div class="video cover" data-src="rain_2"><img /></div>
         </div>
       </label>
 
@@ -652,21 +652,6 @@
           <img class="device app" alt="Rain App Cash Out" src="./content/compressed/rain_app_2.svg" />
           <img class="device app" alt="Rain App Pay" src="./content/compressed/rain_app_1.svg" />
           <img class="device app" alt="Rain App Card" src="./content/compressed/rain_app_3.svg" />
-        </div>
-      </label>
-
-      <label theme="light">
-        <input type="radio" name="item" />
-        <div class="incrementor"></div>
-        <div class="information">
-          <tt class="project">Rain</tt>
-          <tt class="title">Website for Rain's new identity</tt>
-        </div>
-        <div class="tab">
-          <div></div>
-        </div>
-        <div class="content">
-          <img class="device" alt="Rain Website" src="./content/compressed/rain_website_employers.png" />
         </div>
       </label>
 
@@ -916,7 +901,6 @@
       const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
       const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
       const assetPrefix = "./content/compressed/";
-      const isDev = true;
 
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
@@ -1012,9 +996,7 @@
 
           const format = Object.keys(formats).find(format => video.canPlayType(format) !== '');
 
-          return isDev 
-            ? "./content/uncompressed/" + src + ".mp4" 
-            : assetPrefix + src + formats[format];
+          return assetPrefix + src + formats[format];
         }
 
         function selectProject(input) {
