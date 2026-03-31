@@ -164,7 +164,7 @@
         align-items: flex-end;
         position: relative;
         width: 100vw;
-        height: 96vh;
+        aspect-ratio: 16/9;
         overflow: hidden;
         user-select: none;
         padding: 0 20px;
@@ -212,11 +212,10 @@
             left: calc(50% - 100px);
             bottom: 24px;
             width: 200px;
-            aspect-ratio: 3/2;
+            aspect-ratio: 16/9;
             object-fit: cover;
             border-radius: 4px;
             outline: 2px solid white;
-            border-radius: 4px;
             z-index: 10;
           }
 
@@ -308,41 +307,55 @@
             height: 100%;
             object-fit: contain;
             img, video {
+              width: 100%;
+              height: 100%;
               object-fit: contain;
             }
           }
 
-          .device {
-            border-radius: 8px;
-            overflow: hidden;
+          picture {
+            display: block;
+            width: 100%;
+            height: 100%;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
 
-            width: auto;
+          .device {
+            width: 100%;
             height: auto;
-            max-width: calc(100% - 40px);
+            max-width: 92%;
             max-height: 80%;
-            aspect-ratio: 2400/1600;
 
             img, video {
               width: 100%;
               height: 100%;
-              object-fit: cover;
+              object-fit: contain;
+            }
+
+            video {
+              inset: -0.5px;
+              width: calc(100% + 1px);
+              height: calc(100% + 1px);
             }
           }
 
           .app {
             aspect-ratio: 886/1920;
-            max-width: calc(33.33% - 10px);
-            border-radius: 8.97435897%/4.14691943%;
-            border-radius: 14.358974352%/6.635071088%;
+            max-width: calc((92% - 20px) / 3);
+            /* border-radius: 8.97435897%/4.14691943%; */
+            /* border-radius: 14.358974352%/6.635071088%; */
             margin-left: 10px;
             margin-right: 10px;
 
             &:first-child {
-              margin-left: 20px;
+              margin-left: 4%;
             }
 
             &:last-child {
-              margin-right: 20px;
+              margin-right: 4%;
             }
           }
           
@@ -358,7 +371,7 @@
         .obscura-bg {
           background: #1A1A1A !important;
 
-          @media (max-width: 500px) {
+          @media (max-width: 1080px) {
             background: #181818 !important;
           }
         }
@@ -366,7 +379,7 @@
         .walden-bg {
           background: #FAF8F5 !important;
 
-          @media (max-width: 500px) {
+          @media (max-width: 1080px) {
             background: #FAF6F3 !important;
           }
         }
@@ -507,7 +520,7 @@
         }
       }
 
-      @media (max-width: 500px) {
+      @media (max-width: 1080px) {
         #about-us h1 {
           font-size: 19px;
         }
@@ -517,6 +530,7 @@
           flex-direction: column;
           background: black;
           height: auto;
+          aspect-ratio: auto;
           padding: 0;
 
           label {
@@ -530,23 +544,31 @@
               visibility: visible;
               opacity: 1;
               overflow: hidden;
-              height: 85vh;
-              width: 100vw;
+              aspect-ratio: 4/5;
+              width: 100%;
 
               video, img {
                 display: block;
               }
 
+              .device:not(.app) {
+                width: 100% !important;
+                height: 100% !important;
+                max-width: 92% !important;
+                max-height: 100% !important;
+                aspect-ratio: unset !important;
+              }
+
               .app {
-                margin-left: 5px;
-                margin-right: 5px;
+                margin-left: 1%;
+                margin-right: 1%;
 
                 &:first-child {
-                  margin-left: 20px;
+                  margin-left: 4%;
                 }
 
                 &:last-child {
-                  margin-right: 20px;
+                  margin-right: 4%;
                 }
               }
             }
@@ -601,7 +623,7 @@
           <tt class="title">Identity system</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Rain Identity Thumbnail" src="./content/thumbnails/rain_identity.webp" />
+          <img loading="lazy" alt="Rain Identity Thumbnail" src="./content/rain_identity/desktop/rain_identity-thumb.webp" />
           <div></div>
         </div>
         <div class="content" style="background: #0044ff;">
@@ -617,11 +639,28 @@
           <tt class="title">Identity construction</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Rain Construction Thumbnail" src="./content/thumbnails/rain_construction.webp" />
+          <img loading="lazy" alt="Rain Construction Thumbnail" src="./content/rain_identity_construction/desktop/rain_identity_construction-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <img class="cover" fetchpriority="low" alt="Rain Identity Construction" src="./content/compressed/rain_construction.svg" />
+          <picture>
+            <source media="(max-width: 1080px)"
+              srcset="./content/rain_identity_construction/mobile/rain_identity_construction-1080w.webp 1080w,
+                      ./content/rain_identity_construction/mobile/rain_identity_construction-1290w.webp 1290w,
+                      ./content/rain_identity_construction/mobile/rain_identity_construction-1800w.webp 1800w,
+                      ./content/rain_identity_construction/mobile/rain_identity_construction-2160w.webp 2160w"
+              sizes="100vw" />
+            <source
+              srcset="./content/rain_identity_construction/desktop/rain_identity_construction-1920w.webp 1920w,
+                      ./content/rain_identity_construction/desktop/rain_identity_construction-2560w.webp 2560w,
+                      ./content/rain_identity_construction/desktop/rain_identity_construction-2940w.webp 2940w,
+./content/rain_identity_construction/desktop/rain_identity_construction-3024w.webp 3024w,
+                      ./content/rain_identity_construction/desktop/rain_identity_construction-3420w.webp 3420w,
+                      ./content/rain_identity_construction/desktop/rain_identity_construction-3456w.webp 3456w,
+                      ./content/rain_identity_construction/desktop/rain_identity_construction-5120w.webp 5120w"
+              sizes="100vw" />
+            <img class="cover" fetchpriority="low" alt="Rain Identity Construction" />
+          </picture>
         </div>
       </label>
 
@@ -633,7 +672,7 @@
           <tt class="title">Icon system</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Rain Icon System Thumbnail" src="./content/thumbnails/rain_icon.webp" />
+          <img loading="lazy" alt="Rain Icon System Thumbnail" src="./content/rain_icon/desktop/rain_icon-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
@@ -646,16 +685,27 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Rain</tt>
-          <tt class="title">Redesigned Rain's app, empowering over 3.5 million U.S. employees</tt>
+          <tt class="title">Interface design for Rain's product, empowering over 3.5 million U.S. employees</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Rain App Thumbnail" src="./content/thumbnails/rain_app.webp" />
+          <img loading="lazy" alt="Rain App Thumbnail" src="./content/rain_app/desktop/rain_app-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <img class="device app" alt="Rain App Cash Out" src="./content/compressed/rain_app_1.webp" />
-          <img class="device app" alt="Rain App Pay" src="./content/compressed/rain_app_2.webp" />
-          <img class="device app" alt="Rain App Card" src="./content/compressed/rain_app_3.webp" />
+          <picture>
+            <source media="(max-width: 1080px)"
+              srcset="./content/rain_app/mobile/rain_app.svg" />
+            <source
+              srcset="./content/rain_app/desktop/rain_app-1920w.webp 1920w,
+                      ./content/rain_app/desktop/rain_app-2560w.webp 2560w,
+                      ./content/rain_app/desktop/rain_app-2940w.webp 2940w,
+./content/rain_app/desktop/rain_app-3024w.webp 3024w,
+                      ./content/rain_app/desktop/rain_app-3420w.webp 3420w,
+                      ./content/rain_app/desktop/rain_app-3456w.webp 3456w,
+                      ./content/rain_app/desktop/rain_app-5120w.webp 5120w"
+              sizes="100vw" />
+            <img class="cover" fetchpriority="low" alt="Rain App" />
+          </picture>
         </div>
       </label>
 
@@ -667,11 +717,11 @@
           <tt class="title">Engineering for Patreon’s first annual creator report, State Of Create, with Porto Rocha</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="State Of Create Video Thumbnail" src="./content/thumbnails/state_of_create_website.webp" />
+          <img loading="lazy" alt="State Of Create Video Thumbnail" src="./content/patreon_website/device/patreon_website-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <div class="video device" data-src="state_of_create_website"><img /></div>
+          <div class="video device" data-src="patreon_website" data-device-size="2400" data-device-height="1600"><img /></div>
         </div>
       </label>
 
@@ -683,13 +733,44 @@
           <tt class="title">Product design for bitcoin wallet, Coins</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Coins Thumbnail" src="./content/thumbnails/coins.webp" />
+          <img loading="lazy" alt="Coins Thumbnail" src="./content/coins_app/desktop/coins_app-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <img class="device app" alt="Coins" src="./content/compressed/coins_1.webp" />
-          <img class="device app" alt="Coins" src="./content/compressed/coins_2.webp" />
-          <img class="device app" alt="Coins" src="./content/compressed/coins_3.webp" />
+          <picture>
+            <source media="(max-width: 1080px)"
+              srcset="./content/coins_app/mobile/coins_app-1080w.webp 1080w,
+                      ./content/coins_app/mobile/coins_app-1290w.webp 1290w,
+                      ./content/coins_app/mobile/coins_app-1800w.webp 1800w,
+                      ./content/coins_app/mobile/coins_app-2160w.webp 2160w"
+              sizes="100vw" />
+            <source
+              srcset="./content/coins_app/desktop/coins_app-1920w.webp 1920w,
+                      ./content/coins_app/desktop/coins_app-2560w.webp 2560w,
+                      ./content/coins_app/desktop/coins_app-2940w.webp 2940w,
+./content/coins_app/desktop/coins_app-3024w.webp 3024w,
+                      ./content/coins_app/desktop/coins_app-3420w.webp 3420w,
+                      ./content/coins_app/desktop/coins_app-3456w.webp 3456w,
+                      ./content/coins_app/desktop/coins_app-5120w.webp 5120w"
+              sizes="100vw" />
+            <img class="cover" fetchpriority="low" alt="Coins" />
+          </picture>
+        </div>
+      </label>
+
+      <label theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Walden</tt>
+          <tt class="title">Graphic identity system for Walden, inspired by Henry David Thoreau’s Walden</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Walden Identity Thumbnail" src="./content/walden_identity/device/walden_identity-thumb.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <div class="video device" data-src="walden_identity" data-device-size="2400" data-device-height="1600"><img /></div>
         </div>
       </label>
 
@@ -701,11 +782,48 @@
           <tt class="title">Graphic identity system for Walden, inspired by Henry David Thoreau’s Walden</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Walden Identity Thumbnail" src="./content/thumbnails/walden_identity.webp" />
+          <img loading="lazy" alt="Walden Breakdown Thumbnail" src="./content/walden_identity_construction/desktop/walden_identity_construction-thumb.webp" />
           <div></div>
         </div>
-        <div class="content walden-bg">
-          <div class="video contain" data-src="walden_identity"><img /></div>
+        <div class="content">
+          <picture class="contain">
+            <source media="(max-width: 1080px)" srcset="./content/walden_identity_construction/mobile/walden_identity_construction.svg" />
+            <source srcset="./content/walden_identity_construction/desktop/walden_identity_construction.svg" />
+            <img fetchpriority="low" alt="Walden Identity Breakdown" />
+          </picture>
+        </div>
+      </label>
+
+      <label theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Walden</tt>
+          <tt class="title">Graphic identity system for Walden, inspired by Henry David Thoreau's Walden</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Walden Social Thumbnail" src="./content/walden_social/desktop/walden_social-thumb.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <picture>
+            <source media="(max-width: 1080px)"
+              srcset="./content/walden_social/mobile/walden_social-1080w.webp 1080w,
+                      ./content/walden_social/mobile/walden_social-1290w.webp 1290w,
+                      ./content/walden_social/mobile/walden_social-1800w.webp 1800w,
+                      ./content/walden_social/mobile/walden_social-2160w.webp 2160w"
+              sizes="100vw" />
+            <source
+              srcset="./content/walden_social/desktop/walden_social-1920w.webp 1920w,
+                      ./content/walden_social/desktop/walden_social-2560w.webp 2560w,
+                      ./content/walden_social/desktop/walden_social-2940w.webp 2940w,
+./content/walden_social/desktop/walden_social-3024w.webp 3024w,
+                      ./content/walden_social/desktop/walden_social-3420w.webp 3420w,
+                      ./content/walden_social/desktop/walden_social-3456w.webp 3456w,
+                      ./content/walden_social/desktop/walden_social-5120w.webp 5120w"
+              sizes="100vw" />
+            <img class="cover" fetchpriority="low" alt="Walden Social" />
+          </picture>
         </div>
       </label>
 
@@ -714,14 +832,18 @@
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Walden</tt>
-          <tt class="title">Graphic identity system for Walden, inspired by Henry David Thoreau’s Walden</tt>
+          <tt class="title">Graphic identity system for Walden, inspired by Henry David Thoreau's Walden</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Walden Breakdown Thumbnail" src="./content/thumbnails/walden_breakdown.webp" />
+          <img loading="lazy" alt="Walden Print Thumbnail" src="./content/walden_print/desktop/walden_print-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <img class="cover" fetchpriority="low" alt="Walden Identity Breakdown" src="./content/compressed/walden_breakdown.svg" />
+          <picture>
+            <source media="(max-width: 1080px)" srcset="./content/walden_print/mobile/walden_print.svg" />
+            <source srcset="./content/walden_print/desktop/walden_print.svg" />
+            <img class="cover" fetchpriority="low" alt="Walden Print" />
+          </picture>
         </div>
       </label>
 
@@ -733,17 +855,17 @@
           <tt class="title">Design & engineering for Reggie Watts’ personal social media application, WattsApp</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="WattsApp Thumbnail" src="./content/thumbnails/wattsapp.webp" />
+          <img loading="lazy" alt="WattsApp Thumbnail" src="./content/wattsapp_1/device/wattsapp_1-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <div class="video device app" data-src="wattsapp_1"><img /></div>
-          <div class="video device app" data-src="wattsapp_2"><img /></div>
-          <div class="video device app" data-src="wattsapp_3"><img /></div>
+          <div class="video device app" data-src="wattsapp_1" data-device-size="886" data-device-height="1920"><img /></div>
+          <div class="video device app" data-src="wattsapp_2" data-device-size="886" data-device-height="1920"><img /></div>
+          <div class="video device app" data-src="wattsapp_3" data-device-size="886" data-device-height="1920"><img /></div>
         </div>
       </label>
 
-      <label theme="light">
+      <!-- <label theme="light">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
@@ -757,7 +879,7 @@
         <div class="content">
           <div class="video cover" data-src="specter_identity"><img /></div>
         </div>
-      </label>
+      </label> -->
 
       <label theme="dark">
         <input type="radio" name="item" />
@@ -767,13 +889,50 @@
           <tt class="title">Design for Swan’s core application redesign, improving trust, transparency, and responsiveness</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Swan Transactions Thumbnail" src="./content/thumbnails/swan_transactions.webp" />
+          <img loading="lazy" alt="Swan Transactions Thumbnail" src="./content/swan_vault/desktop/swan_vault-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <img class="cover left-align fade-out-bottom" fetchpriority="low" alt="Swan Transactions" src="./content/compressed/swan_transactions.webp" />
+          <picture>
+            <source media="(max-width: 1080px)"
+              srcset="./content/swan_vault/mobile/swan_vault-1080w.webp 1080w,
+                      ./content/swan_vault/mobile/swan_vault-1290w.webp 1290w,
+                      ./content/swan_vault/mobile/swan_vault-1800w.webp 1800w,
+                      ./content/swan_vault/mobile/swan_vault-2160w.webp 2160w"
+              sizes="100vw" />
+            <source
+              srcset="./content/swan_vault/desktop/swan_vault-1920w.webp 1920w,
+                      ./content/swan_vault/desktop/swan_vault-2560w.webp 2560w,
+                      ./content/swan_vault/desktop/swan_vault-2940w.webp 2940w,
+                      ./content/swan_vault/desktop/swan_vault-3024w.webp 3024w,
+                      ./content/swan_vault/desktop/swan_vault-3420w.webp 3420w,
+                      ./content/swan_vault/desktop/swan_vault-3456w.webp 3456w,
+                      ./content/swan_vault/desktop/swan_vault-5120w.webp 5120w"
+              sizes="100vw" />
+            <img class="cover fade-out-bottom" fetchpriority="low" alt="Swan Transactions" />
+          </picture>
         </div>
       </label>
+
+      <!-- <label theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">Swan</tt>
+          <tt class="title">Widget design for Swan</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Swan Widgets Thumbnail" src="./content/swan_widgets/desktop/swan_widgets-thumb.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <picture>
+            <source media="(max-width: 1080px)" srcset="./content/swan_widgets/mobile/swan_widgets.svg" />
+            <source srcset="./content/swan_widgets/desktop/swan_widgets.svg" />
+            <img class="cover" fetchpriority="low" alt="Swan Widgets" />
+          </picture>
+        </div>
+      </label> -->
 
       <label theme="light">
         <input type="radio" name="item" />
@@ -783,11 +942,11 @@
           <tt class="title">Name & graphic identity system for Programme</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Programme Identity Thumbnail" src="./content/thumbnails/programme_identity.webp" />
+          <img loading="lazy" alt="Programme Identity Thumbnail" src="./content/programme_identity/device/programme_identity-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <div class="video contain" data-src="programme_identity"><img /></div>
+          <div class="video device" data-src="programme_identity" data-device-size="2400" data-device-height="1600"><img /></div>
         </div>
       </label>
 
@@ -799,13 +958,28 @@
           <tt class="title">Design & engineering for Programme’s mobile application</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Programme App Thumbnail" src="./content/thumbnails/programme_app.webp" />
+          <img loading="lazy" alt="Programme App Thumbnail" src="./content/programme_app/desktop/programme_app-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <img class="device app" alt="Programme App" src="./content/compressed/programme_app_1.webp" />
-          <img class="device app" alt="Programme App" src="./content/compressed/programme_app_2.webp" />
-          <img class="device app" alt="Programme App" src="./content/compressed/programme_app_3.webp" />
+          <picture>
+            <source media="(max-width: 1080px)"
+              srcset="./content/programme_app/mobile/programme_app-1080w.webp 1080w,
+                      ./content/programme_app/mobile/programme_app-1290w.webp 1290w,
+                      ./content/programme_app/mobile/programme_app-1800w.webp 1800w,
+                      ./content/programme_app/mobile/programme_app-2160w.webp 2160w"
+              sizes="100vw" />
+            <source
+              srcset="./content/programme_app/desktop/programme_app-1920w.webp 1920w,
+                      ./content/programme_app/desktop/programme_app-2560w.webp 2560w,
+                      ./content/programme_app/desktop/programme_app-2940w.webp 2940w,
+./content/programme_app/desktop/programme_app-3024w.webp 3024w,
+                      ./content/programme_app/desktop/programme_app-3420w.webp 3420w,
+                      ./content/programme_app/desktop/programme_app-3456w.webp 3456w,
+                      ./content/programme_app/desktop/programme_app-5120w.webp 5120w"
+              sizes="100vw" />
+            <img class="cover" fetchpriority="low" alt="Programme App" />
+          </picture>
         </div>
       </label>
 
@@ -817,11 +991,11 @@
           <tt class="title">Design & engineering for Programme’s website</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Programme Video Thumbnail" src="./content/thumbnails/programme_website.webp" />
+          <img loading="lazy" alt="Programme Video Thumbnail" src="./content/programme_website/device/programme_website-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <div class="video device" data-src="programme_website"><img /></div>
+          <div class="video device" data-src="programme_website" data-device-size="2400" data-device-height="1600"><img /></div>
         </div>
       </label>
 
@@ -833,30 +1007,31 @@
           <tt class="title">Production & direction for 1000+ exercise videos for Programme's product & website</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Programme Exercise Library Thumbnail" src="./content/thumbnails/programme_library.webp" />
+          <img loading="lazy" alt="Programme Exercise Library Thumbnail" src="./content/programme_movement_library/desktop/programme_movement_library-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
-          <img class="cover" style="object-position: 50% 15%;" alt="Programme Exercise Library Behind The Scenes" src="./content/compressed/programme_library.webp" />
+          <picture>
+            <source media="(max-width: 1080px)"
+              srcset="./content/programme_movement_library/mobile/programme_movement_library-1080w.webp 1080w,
+                      ./content/programme_movement_library/mobile/programme_movement_library-1290w.webp 1290w,
+                      ./content/programme_movement_library/mobile/programme_movement_library-1800w.webp 1800w,
+                      ./content/programme_movement_library/mobile/programme_movement_library-2160w.webp 2160w"
+              sizes="100vw" />
+            <source
+              srcset="./content/programme_movement_library/desktop/programme_movement_library-1920w.webp 1920w,
+                      ./content/programme_movement_library/desktop/programme_movement_library-2560w.webp 2560w,
+                      ./content/programme_movement_library/desktop/programme_movement_library-2940w.webp 2940w,
+./content/programme_movement_library/desktop/programme_movement_library-3024w.webp 3024w,
+                      ./content/programme_movement_library/desktop/programme_movement_library-3420w.webp 3420w,
+                      ./content/programme_movement_library/desktop/programme_movement_library-3456w.webp 3456w,
+                      ./content/programme_movement_library/desktop/programme_movement_library-5120w.webp 5120w"
+              sizes="100vw" />
+            <img class="cover" style="object-position: 50% 15%;" fetchpriority="low" alt="Programme Exercise Library Behind The Scenes" />
+          </picture>
         </div>
       </label>
       
-      <label theme="light">
-        <input type="radio" name="item" />
-        <div class="incrementor"></div>
-        <div class="information">
-          <tt class="project">Obscura</tt>
-          <tt class="title">Design & engineering for Obscura’s launch assets & website</tt>
-        </div>
-        <div class="tab">
-          <img loading="lazy" alt="Obscura Thumbnail" src="./content/thumbnails/obscura_dark.webp" />
-          <div></div>
-        </div>
-        <div class="content obscura-bg">
-          <div class="video contain" data-src="obscura_dark" data-src-mobile="obscura_dark_mobile"><img /></div>
-        </div>
-      </label>
-
       <label theme="dark">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
@@ -865,13 +1040,14 @@
           <tt class="title">Engineering for Rebound’s first-to-market exposure therapy mobile application</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Rebound Thumbnail" src="./content/thumbnails/rebound_app.webp" />
+          <img loading="lazy" alt="Rebound Thumbnail" src="./content/rebound_app/desktop/rebound_app-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
           <div class="video cover fade-out-bottom" style="object-position: 50% 33.3%;" data-src="rebound_app"><img /></div>
         </div>
       </label>
+
 
       <label theme="light">
         <input type="radio" name="item" />
@@ -881,13 +1057,47 @@
           <tt class="title">Design & engineering for Mortal’s death contemplation mobile application</tt>
         </div>
         <div class="tab">
-          <img loading="lazy" alt="Mortal App Thumbnail" src="./content/thumbnails/mortal_app.webp" />
+          <img loading="lazy" alt="Mortal App Thumbnail" src="./content/mortal_app/desktop/mortal_app-thumb.webp" />
           <div></div>
         </div>
         <div class="content">
           <div class="video cover" data-src="mortal_app"><img /></div>
         </div>
       </label>
+
+      <!-- <label theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">OTK Studio</tt>
+          <tt class="title">Identity design</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="OTK Studio Thumbnail" src="./content/otk_studio/desktop/otk_studio-thumb.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <picture>
+            <source
+            <source media="(max-width: 1080px)"
+              srcset="./content/otk_studio/mobile/otk_studio-1080w.webp 1080w,
+                      ./content/otk_studio/mobile/otk_studio-1290w.webp 1290w,
+                      ./content/otk_studio/mobile/otk_studio-1800w.webp 1800w,
+                      ./content/otk_studio/mobile/otk_studio-2160w.webp 2160w"
+              sizes="100vw" />
+            <source
+              srcset="./content/otk_studio/desktop/otk_studio-1920w.webp 1920w,
+                      ./content/otk_studio/desktop/otk_studio-2560w.webp 2560w,
+                      ./content/otk_studio/desktop/otk_studio-2940w.webp 2940w,
+./content/otk_studio/desktop/otk_studio-3024w.webp 3024w,
+                      ./content/otk_studio/desktop/otk_studio-3420w.webp 3420w,
+                      ./content/otk_studio/desktop/otk_studio-3456w.webp 3456w,
+                      ./content/otk_studio/desktop/otk_studio-5120w.webp 5120w"
+              sizes="100vw" />
+            <img class="cover" fetchpriority="low" alt="OTK Studio" />
+          </picture>
+        </div>
+      </label> -->
     </div>
 
     <div id="about-us">
@@ -950,7 +1160,7 @@
 
                 video.addEventListener('playing', () => {
                   video.style.opacity = '1';
-                  if (window.innerWidth > 500) {
+                  if (window.innerWidth > 1080) {
                     setTimeout(() => img.style.opacity = '0', 300);
                   }
                 });
@@ -958,7 +1168,7 @@
                 target.appendChild(video);
               };
 
-              if (window.innerWidth <= 500) {
+              if (window.innerWidth <= 1080) {
                 const timeout = setTimeout(loadVideo, 200);
                 pendingTimeouts.set(target, timeout);
               } else {
@@ -977,7 +1187,7 @@
                 }, 300);
 
                 existingVideo.style.opacity = '0';
-                if (window.innerWidth > 500) {
+                if (window.innerWidth > 1080) {
                   img.style.opacity = '1';
                 }
               }
@@ -986,13 +1196,37 @@
         }, { threshold: 0.5 });
 
 
+        function selectWidth(isMobile) {
+          const px = window.innerWidth * (window.devicePixelRatio || 1);
+          if (isMobile) {
+            if (px <= 1080) return '1080w';
+            if (px <= 1290) return '1290w';
+            if (px <= 1800) return '1800w';
+            return '2160w';
+          } else {
+            if (px <= 1920) return '1920w';
+            if (px <= 2560) return '2560w';
+            return '3840w';
+          }
+        }
+
         function getVideoSource(video, dataset) {
-          const src = window.innerWidth <= 500 && dataset.srcMobile ? dataset.srcMobile : dataset.src;
+          const isMobile = window.innerWidth <= 1080;
+          const src = isMobile && dataset.srcMobile ? dataset.srcMobile : dataset.src;
+
+          let subfolder, width;
+          if (dataset.deviceSize) {
+            subfolder = 'device';
+            width = dataset.deviceSize + 'w';
+          } else {
+            subfolder = isMobile ? 'mobile' : 'desktop';
+            width = selectWidth(isMobile);
+          }
 
           const formats = {
-            "video/mp4; codecs=hevc": "_h265.mp4",
-            "video/webm; codecs=vp9": ".webm",
-            "video/mp4; codecs=avc1": "_h264.mp4" 
+            "video/mp4; codecs=hvc1": `-${width}-h265.mp4`,
+            "video/webm; codecs=vp9": `-${width}.webm`,
+            "video/mp4; codecs=avc1": `-${width}-h264.mp4`
           };
 
           if (isMac && isSafari) {
@@ -1001,7 +1235,7 @@
 
           const format = Object.keys(formats).find(format => video.canPlayType(format) !== '');
 
-          return assetPrefix + src + formats[format];
+          return `./content/${src}/${subfolder}/${src}${formats[format]}`;
         }
 
         function selectProject(input) {
@@ -1011,7 +1245,7 @@
 
         /*
         function startCyclingProjects() {
-          if (window.innerWidth <= 500) {
+          if (window.innerWidth <= 1080) {
             return;
           }
 
@@ -1025,7 +1259,7 @@
         }
 
         function pauseCyclingProjects() {
-          if (window.innerWidth <= 500) {
+          if (window.innerWidth <= 1080) {
             return;
           }
 
@@ -1072,7 +1306,7 @@
           // clearTimeout(inactivityTimeout);
 
           /*
-          if (window.innerWidth > 500) {
+          if (window.innerWidth > 1080) {
             inactivityTimeout = setTimeout(() => {
               startCyclingProjects();
             }, 8000);
@@ -1080,7 +1314,7 @@
           */
 
           radioInputs.forEach((input, index) => {
-            if (window.innerWidth <= 500) {
+            if (window.innerWidth <= 1080) {
               input.disabled = true;
               if (index === 0) selectProject(input);
             } else {
@@ -1098,8 +1332,23 @@
         */
 
         videos.forEach(video => {
-          const src = window.innerWidth <= 500 && video.dataset.srcMobile ? video.dataset.srcMobile : video.dataset.src;
-          video.querySelector('img').src = assetPrefix + src + "-poster.webp";
+          const isMobile = window.innerWidth <= 1080;
+          const src = isMobile && video.dataset.srcMobile ? video.dataset.srcMobile : video.dataset.src;
+
+          let subfolder, width;
+          if (video.dataset.deviceSize) {
+            subfolder = 'device';
+            width = video.dataset.deviceSize + 'w';
+            if (window.innerWidth > 1080) {
+              video.style.maxWidth = `min(${parseInt(video.dataset.deviceSize) / 2}px, 92%)`;
+              video.style.aspectRatio = `${video.dataset.deviceSize} / ${video.dataset.deviceHeight}`;
+            }
+          } else {
+            subfolder = isMobile ? 'mobile' : 'desktop';
+            width = selectWidth(isMobile);
+          }
+
+          video.querySelector('img').src = `./content/${src}/${subfolder}/${src}-${width}-poster.webp`;
           video.querySelector('img').alt = src;
           videoObserver.observe(video);
         });
