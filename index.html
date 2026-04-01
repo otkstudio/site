@@ -261,6 +261,8 @@
           right: 0px;
           bottom: 0px;
           left: 200vw;
+          width: 100vw;
+          aspect-ratio: 16 / 9;
 
           .video {
             position: relative;
@@ -343,12 +345,9 @@
           }
 
           .app {
-            aspect-ratio: 886/1920;
             max-width: calc((92% - 20px) / 3);
-            /* border-radius: 8.97435897%/4.14691943%; */
-            /* border-radius: 14.358974352%/6.635071088%; */
-            margin-left: 10px;
-            margin-right: 10px;
+            margin-left: 2%;
+            margin-right: 2%;
 
             &:first-child {
               margin-left: 4%;
@@ -361,26 +360,6 @@
           
           .fade-out-bottom {
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0.5) 100%);
-          }
-
-          .left-align {
-            object-position: top left;
-          }
-        }
-
-        .obscura-bg {
-          background: #1A1A1A !important;
-
-          @media (max-width: 1080px) {
-            background: #181818 !important;
-          }
-        }
-
-        .walden-bg {
-          background: #FAF8F5 !important;
-
-          @media (max-width: 1080px) {
-            background: #FAF6F3 !important;
           }
         }
 
@@ -545,7 +524,6 @@
               opacity: 1;
               overflow: hidden;
               aspect-ratio: 4/5;
-              width: 100%;
 
               video, img {
                 display: block;
@@ -619,8 +597,8 @@
         <input type="radio" name="item" checked />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Rain</tt>
-          <tt class="title">Identity system</tt>
+          <tt class="project">2026</tt>
+          <tt class="title">Identity design for Rain</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Rain Identity Thumbnail" src="./content/rain_identity/desktop/rain_identity-thumb.webp" />
@@ -635,8 +613,8 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Rain</tt>
-          <tt class="title">Identity construction</tt>
+          <tt class="project">2026</tt>
+          <tt class="title">Identity design for Rain</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Rain Construction Thumbnail" src="./content/rain_identity_construction/desktop/rain_identity_construction-thumb.webp" />
@@ -664,12 +642,12 @@
         </div>
       </label>
 
-      <label theme="light">
+      <label theme="neutral">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Rain</tt>
-          <tt class="title">Icon system</tt>
+          <tt class="project">2026</tt>
+          <tt class="title">Interface design for Rain, empowering over 3.5 million U.S. employees</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Rain Icon System Thumbnail" src="./content/rain_icon/desktop/rain_icon-thumb.webp" />
@@ -684,8 +662,8 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Rain</tt>
-          <tt class="title">Interface design for Rain's product, empowering over 3.5 million U.S. employees</tt>
+          <tt class="project">2026</tt>
+          <tt class="title">Interface design for Rain, empowering over 3.5 million U.S. employees</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Rain App Thumbnail" src="./content/rain_app/desktop/rain_app-thumb.webp" />
@@ -713,8 +691,8 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Patreon</tt>
-          <tt class="title">Engineering for Patreon’s first annual creator report, State Of Create, with Porto Rocha</tt>
+          <tt class="project">2025</tt>
+          <tt class="title">Engineering for Patreon’s first annual creator report, State Of Create, w/ Porto Rocha</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="State Of Create Video Thumbnail" src="./content/patreon_website/device/patreon_website-thumb.webp" />
@@ -729,8 +707,8 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Coins</tt>
-          <tt class="title">Product design for bitcoin wallet, Coins</tt>
+          <tt class="project">2025</tt>
+          <tt class="title">Interface design for Coins</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Coins Thumbnail" src="./content/coins_app/desktop/coins_app-thumb.webp" />
@@ -762,14 +740,31 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Walden</tt>
-          <tt class="title">Graphic identity system for Walden, inspired by Henry David Thoreau’s Walden</tt>
+          <tt class="project">2024</tt>
+          <tt class="title">Engineering for Rebound’s first-to-market exposure therapy mobile application</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Rebound Thumbnail" src="./content/rebound_app/desktop/rebound_app-thumb.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <div class="video cover fade-out-bottom" style="object-position: 50% 33.3%;" data-src="rebound_app"><img /></div>
+        </div>
+      </label>
+
+
+      <label theme="dark">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">2023</tt>
+          <tt class="title">Identity design for Walden, inspired by Henry David Thoreau’s Walden</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Walden Identity Thumbnail" src="./content/walden_identity/device/walden_identity-thumb.webp" />
           <div></div>
         </div>
-        <div class="content" style="background:#F9F6F1 !important; display:flex; align-items:center; justify-content:center; width:100vw;">
+        <div class="content" style="background: #F9F6F1;">
           <walden-logotype width="60vw"></walden-logotype>
           <script src="./content/walden_identity/walden-logotype.js"></script>
         </div>
@@ -779,8 +774,8 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Walden</tt>
-          <tt class="title">Graphic identity system for Walden, inspired by Henry David Thoreau’s Walden</tt>
+          <tt class="project">2023</tt>
+          <tt class="title">Identity design for Walden, inspired by Henry David Thoreau’s Walden</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Walden Breakdown Thumbnail" src="./content/walden_identity_construction/desktop/walden_identity_construction-thumb.webp" />
@@ -832,8 +827,8 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Walden</tt>
-          <tt class="title">Graphic identity system for Walden, inspired by Henry David Thoreau's Walden</tt>
+          <tt class="project">2023</tt>
+          <tt class="title">Identity design for Walden, inspired by Henry David Thoreau’s Walden</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Walden Print Thumbnail" src="./content/walden_print/desktop/walden_print-thumb.webp" />
@@ -845,24 +840,6 @@
             <source srcset="./content/walden_print/desktop/walden_print.svg" />
             <img class="cover" fetchpriority="low" alt="Walden Print" />
           </picture>
-        </div>
-      </label>
-
-      <label theme="light">
-        <input type="radio" name="item" />
-        <div class="incrementor"></div>
-        <div class="information">
-          <tt class="project">Reggie Watts</tt>
-          <tt class="title">Design & engineering for Reggie Watts’ personal social media application, WattsApp</tt>
-        </div>
-        <div class="tab">
-          <img loading="lazy" alt="WattsApp Thumbnail" src="./content/wattsapp_1/device/wattsapp_1-thumb.webp" />
-          <div></div>
-        </div>
-        <div class="content">
-          <div class="video device app" data-src="wattsapp_1" data-device-size="886" data-device-height="1920"><img /></div>
-          <div class="video device app" data-src="wattsapp_2" data-device-size="886" data-device-height="1920"><img /></div>
-          <div class="video device app" data-src="wattsapp_3" data-device-size="886" data-device-height="1920"><img /></div>
         </div>
       </label>
 
@@ -882,12 +859,32 @@
         </div>
       </label> -->
 
-      <label theme="dark">
+      <!-- <label theme="light">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
           <tt class="project">Swan</tt>
-          <tt class="title">Design for Swan’s core application redesign, improving trust, transparency, and responsiveness</tt>
+          <tt class="title">Widget design for Swan</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="Swan Widgets Thumbnail" src="./content/swan_widgets/desktop/swan_widgets-thumb.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <picture>
+            <source media="(max-width: 1080px)" srcset="./content/swan_widgets/mobile/swan_widgets.svg" />
+            <source srcset="./content/swan_widgets/desktop/swan_widgets.svg" />
+            <img class="cover" fetchpriority="low" alt="Swan Widgets" />
+          </picture>
+        </div>
+      </label> -->
+
+      <label theme="dark">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">2023</tt>
+          <tt class="title">Interface design for Swan’s core application redesign</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Swan Transactions Thumbnail" src="./content/swan_vault/desktop/swan_vault-thumb.webp" />
@@ -915,32 +912,12 @@
         </div>
       </label>
 
-      <!-- <label theme="light">
-        <input type="radio" name="item" />
-        <div class="incrementor"></div>
-        <div class="information">
-          <tt class="project">Swan</tt>
-          <tt class="title">Widget design for Swan</tt>
-        </div>
-        <div class="tab">
-          <img loading="lazy" alt="Swan Widgets Thumbnail" src="./content/swan_widgets/desktop/swan_widgets-thumb.webp" />
-          <div></div>
-        </div>
-        <div class="content">
-          <picture>
-            <source media="(max-width: 1080px)" srcset="./content/swan_widgets/mobile/swan_widgets.svg" />
-            <source srcset="./content/swan_widgets/desktop/swan_widgets.svg" />
-            <img class="cover" fetchpriority="low" alt="Swan Widgets" />
-          </picture>
-        </div>
-      </label> -->
-
       <label theme="light">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Programme</tt>
-          <tt class="title">Name & graphic identity system for Programme</tt>
+          <tt class="project">2021</tt>
+          <tt class="title">Naming & identity design for Programme</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Programme Identity Thumbnail" src="./content/programme_identity/device/programme_identity-thumb.webp" />
@@ -955,8 +932,8 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Programme</tt>
-          <tt class="title">Design & engineering for Programme’s mobile application</tt>
+          <tt class="project">2021</tt>
+          <tt class="title">Interface design & engineering for Programme’s mobile application</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Programme App Thumbnail" src="./content/programme_app/desktop/programme_app-thumb.webp" />
@@ -967,7 +944,7 @@
             <source media="(max-width: 1080px)"
               srcset="./content/programme_app/mobile/programme_app-1080w.webp 1080w,
                       ./content/programme_app/mobile/programme_app-1290w.webp 1290w,
-                      ./content/programme_app/mobile/programme_app-1800w.webp 1800w,
+                      . style="width: 100vw"/content/programme_app/mobile/programme_app-1800w.webp 1800w,
                       ./content/programme_app/mobile/programme_app-2160w.webp 2160w"
               sizes="100vw" />
             <source
@@ -988,8 +965,8 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Programme</tt>
-          <tt class="title">Design & engineering for Programme’s website</tt>
+          <tt class="project">2021</tt>
+          <tt class="title">Interface design & engineering for Programme’s website</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Programme Video Thumbnail" src="./content/programme_website/device/programme_website-thumb.webp" />
@@ -1004,7 +981,7 @@
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Programme</tt>
+          <tt class="project">2021</tt>
           <tt class="title">Production & direction for 1000+ exercise videos for Programme's product & website</tt>
         </div>
         <div class="tab">
@@ -1032,30 +1009,13 @@
           </picture>
         </div>
       </label>
-      
-      <label theme="dark">
-        <input type="radio" name="item" />
-        <div class="incrementor"></div>
-        <div class="information">
-          <tt class="project">Rebound</tt>
-          <tt class="title">Engineering for Rebound’s first-to-market exposure therapy mobile application</tt>
-        </div>
-        <div class="tab">
-          <img loading="lazy" alt="Rebound Thumbnail" src="./content/rebound_app/desktop/rebound_app-thumb.webp" />
-          <div></div>
-        </div>
-        <div class="content">
-          <div class="video cover fade-out-bottom" style="object-position: 50% 33.3%;" data-src="rebound_app"><img /></div>
-        </div>
-      </label>
-
 
       <label theme="light">
         <input type="radio" name="item" />
         <div class="incrementor"></div>
         <div class="information">
-          <tt class="project">Mortal</tt>
-          <tt class="title">Design & engineering for Mortal’s death contemplation mobile application</tt>
+          <tt class="project">2020</tt>
+          <tt class="title">Identity design, interface design & engineering for Mortal’s death contemplation mobile application</tt>
         </div>
         <div class="tab">
           <img loading="lazy" alt="Mortal App Thumbnail" src="./content/mortal_app/desktop/mortal_app-thumb.webp" />
@@ -1063,6 +1023,24 @@
         </div>
         <div class="content">
           <div class="video cover" data-src="mortal_app"><img /></div>
+        </div>
+      </label>
+
+      <label theme="light">
+        <input type="radio" name="item" />
+        <div class="incrementor"></div>
+        <div class="information">
+          <tt class="project">2020</tt>
+          <tt class="title">Identity design, interface design & engineering for Reggie Watts’ personal social media application, WattsApp</tt>
+        </div>
+        <div class="tab">
+          <img loading="lazy" alt="WattsApp Thumbnail" src="./content/wattsapp_1/device/wattsapp_1-thumb.webp" />
+          <div></div>
+        </div>
+        <div class="content">
+          <div class="video device app" data-src="wattsapp_1" data-device-size="886" data-device-height="1920"><img /></div>
+          <div class="video device app" data-src="wattsapp_2" data-device-size="886" data-device-height="1920"><img /></div>
+          <div class="video device app" data-src="wattsapp_3" data-device-size="886" data-device-height="1920"><img /></div>
         </div>
       </label>
 
