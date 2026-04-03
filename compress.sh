@@ -685,25 +685,8 @@ process_device_video() {
     fi
   fi
 
-  if [[ "$DO_THUMBNAILS" == true ]]; then
-    local thumb_out="$OUT_DIR/device/${SLUG}-thumb.webp"
-    if [[ -n "$THUMB_SRC_OVERRIDE" ]]; then
-      encode_thumbnail "$THUMB_SRC_OVERRIDE" "$thumb_out"
-    else
-      local tw="$THUMB_WIDTH" th=$(( THUMB_WIDTH * h / w ))
-      if should_encode "$thumb_out"; then
-        local tmp_thumb
-        tmp_thumb="$(mktemp /tmp/compress_thumb_XXXXXX).png"
-        ffmpeg -loglevel error \
-          -i "$src" \
-          -vf "select=eq(n\\,${POSTER_FRAME}),scale=${tw}:${th}:flags=lanczos" \
-          -frames:v 1 -update 1 -y "$tmp_thumb"
-        encode_thumbnail "$tmp_thumb" "$thumb_out"
-        rm -f "$tmp_thumb"
-      else
-        log_skip "$(basename "$thumb_out")"
-      fi
-    fi
+  if [[ "$DO_THUMBNAILS" == true && -n "$THUMB_SRC_OVERRIDE" ]]; then
+    encode_thumbnail "$THUMB_SRC_OVERRIDE" "$OUT_DIR/device/${SLUG}-thumb.webp"
   fi
 }
 
