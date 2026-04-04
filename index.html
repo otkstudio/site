@@ -604,8 +604,8 @@
           <img loading="lazy" alt="Rain Identity Thumbnail" src="./content/rain_identity/desktop/rain_identity-thumb.webp" />
           <div></div>
         </div>
-        <div class="content" style="background: #0044ff;">
-          <div class="video cover" data-src="rain_identity"><img /></div>
+        <div class="content">
+          <div class="video cover" data-src="rain_identity" data-poster="data:image/webp;base64,UklGRnoAAABXRUJQVlA4TG4AAAAvf8cNAQdQoux//wMCkqT/+wMj+p/xn//85z//+c9//vOf//znP//5z3/+85///Oc///nPf/7zn//85z//+c9//vOf//znP//5z3/+85///Oc///nPf/7zn//85z//+c9//vOf//znP//5z/97AQ=="><img /></div>
         </div>
       </label>
 
@@ -1343,7 +1343,7 @@
             width = selectWidth(isMobile);
           }
 
-          video.querySelector('img').src = `./content/${src}/${subfolder}/${src}-${width}-poster.webp`;
+          video.querySelector('img').src = video.dataset.poster || `./content/${src}/${subfolder}/${src}-${width}-poster.webp`;
           video.querySelector('img').alt = src;
           videoObserver.observe(video);
         });
