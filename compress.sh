@@ -21,6 +21,7 @@
 # ║    src/<slug>/mobile.mp4      accepted in place of .mov                     ║
 # ║    src/<slug>/device.mov      screen recording at native res → device/      ║
 # ║    src/<slug>/device.mp4      accepted in place of .mov                     ║
+# ║    src/<slug>/device.<ext>    still image at native res    → device/        ║
 # ║                                                                              ║
 # ║  All quality settings live in compress.config.sh                            ║
 # ╚══════════════════════════════════════════════════════════════════════════════╝
@@ -651,6 +652,29 @@ process_mobile_video() {
 
 # ── Device pipeline ─────────────────────────────────────────────────────────────
 
+process_device_images() {
+  local src
+  if ! src="$(find_source_image "$SOURCES_DIR" "device")"; then
+    return 0  # device image is optional
+  fi
+
+  local dims w h
+  dims="$(magick identify -format "%w %h" "${src}[0]" 2>/dev/null)"
+  w="$(echo "$dims" | cut -d' ' -f1)"
+  h="$(echo "$dims" | cut -d' ' -f2)"
+
+  log_section "Device image  ←  $(basename "$src")  (${w}×${h})"
+
+  if [[ "$DO_IMAGES" == true ]]; then
+    encode_image "$src" "$w" "$h" "$OUT_DIR/device/${SLUG}-${w}w.${IMG_FORMAT}"
+  fi
+
+  if [[ "$DO_THUMBNAILS" == true ]]; then
+    local thumb_src="${THUMB_SRC_OVERRIDE:-$src}"
+    encode_thumbnail "$thumb_src" "$OUT_DIR/device/${SLUG}-thumb.webp"
+  fi
+}
+
 process_device_video() {
   local src=""
   for ext in mov mp4 MP4 MOV; do
@@ -727,6 +751,7 @@ main() {
     [[ "$DO_VIDEO" == true || "$DO_POSTERS" == true ]] && process_mobile_video
   fi
 
+  [[ "$DO_IMAGES" == true || "$DO_THUMBNAILS" == true ]] && process_device_images
   [[ "$DO_VIDEO" == true || "$DO_POSTERS" == true || "$DO_THUMBNAILS" == true ]] && process_device_video
 
   echo -e "\n${BOLD}${GREEN}Done.${RESET}  Output → $OUT_DIR\n"
