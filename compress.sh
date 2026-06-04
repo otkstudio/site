@@ -11,6 +11,8 @@
 # ║    ./compress.sh <slug> --posters-only      Poster extraction only           ║
 # ║    ./compress.sh <slug> --thumbnails-only   Thumbnails only                  ║
 # ║    ./compress.sh <slug> --force             Re-encode existing output files  ║
+# ║    ./compress.sh <slug> --src-root=<path>   Override default `src` root      ║
+# ║    ./compress.sh <slug> --out-root=<path>   Override default `content` root  ║
 # ║                                                                              ║
 # ║  Source files expected in:                                                   ║
 # ║    src/<slug>/desktop.<ext>   5120×2880 still image                         ║
@@ -64,6 +66,8 @@ DO_VIDEO=true
 DO_POSTERS=true
 DO_THUMBNAILS=true
 FORCE=false
+SRC_ROOT_OVERRIDE=""
+OUT_ROOT_OVERRIDE=""
 
 # ── Parse arguments ─────────────────────────────────────────────────────────────
 
@@ -84,6 +88,8 @@ for arg in "$@"; do
     --posters-only)    DO_IMAGES=false; DO_VIDEO=false ;;
     --thumbnails-only) DO_IMAGES=false; DO_VIDEO=false; DO_POSTERS=false ;;
     --force)           FORCE=true ;;
+    --src-root=*)      SRC_ROOT_OVERRIDE="${arg#*=}" ;;
+    --out-root=*)      OUT_ROOT_OVERRIDE="${arg#*=}" ;;
     *)
       echo "Unknown flag: $arg"
       exit 1
@@ -92,9 +98,17 @@ for arg in "$@"; do
 done
 
 # ── Paths ───────────────────────────────────────────────────────────────────────
+# Roots can be overridden (e.g. for the references library which lives under
+# references/src and references/content). Relative paths resolve from SCRIPT_DIR.
 
-CONTENT_DIR="$SCRIPT_DIR/content"
-SOURCES_DIR="$SCRIPT_DIR/src/$SLUG"
+resolve_root() {
+  local root="$1"
+  [[ "$root" = /* ]] && echo "$root" || echo "$SCRIPT_DIR/$root"
+}
+
+SRC_ROOT="$(resolve_root "${SRC_ROOT_OVERRIDE:-src}")"
+CONTENT_DIR="$(resolve_root "${OUT_ROOT_OVERRIDE:-content}")"
+SOURCES_DIR="$SRC_ROOT/$SLUG"
 OUT_DIR="$CONTENT_DIR/$SLUG"
 
 # ── Colours for output ──────────────────────────────────────────────────────────

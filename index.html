@@ -507,10 +507,10 @@
             --chassis-w: 460;
             --chassis-h: 960;
             --chassis-source-w: 1380;   /* bezel PNG width — picker checks against this */
-            --screen-inset-top: 2.396%;    /* screen cutout centered (72px each side); */
-            --screen-inset-right: 4.130%;  /* tightened 3 PNG px on each edge to overlap */
-            --screen-inset-bottom: 2.396%; /* the bezel cutout and mask sub-pixel gaps   */
-            --screen-inset-left: 4.130%;
+            --screen-inset-top: 2.396%;    /* tuned for iOS DI alignment: recording's   */
+            --screen-inset-right: 4.130%;  /* DI (~recording y=63) lands at bezel's DI  */
+            --screen-inset-bottom: 2.396%; /* shape (chassis y=133) within <1 px.        */
+            --screen-inset-left: 4.130%;   /* L/R tightened 3 PNG px (60→57) for overlap */
             --screen-radius: 14.286% / 6.579%;
             --shadows-w: 150.217%;
             --shadows-h: 123.75%;
